@@ -1,0 +1,14 @@
+.Rproj.user
+NewGPLesson.Rproj
+.Rhistory
+.RData
+.Ruserdata
+.DS_STORE
+#exclude folders *recursively*, otherwise overrules all exceptions!
+/assets/**
+/assembled-lesson-materials/**
+#excludes subfolders from ignore rules
+!/assets/**/ 
+!/assets/**/.gitkeep
+!/assembled-lesson-materials/**/
+!assembled-lesson-materials/**/.gitkeep
