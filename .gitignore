@@ -8,7 +8,11 @@ NewGPLesson.Rproj
 /assets/**
 /assembled-lesson-materials/**
 #excludes subfolders from ignore rules
-!/assets/**/ 
+!/assets/**/
 !/assets/**/.gitkeep
 !/assembled-lesson-materials/**/
 !assembled-lesson-materials/**/.gitkeep
+Icon
+/*/Icon
+Icon?
+cachedPhyloPicPNGs
