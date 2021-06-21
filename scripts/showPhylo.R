@@ -1,3 +1,98 @@
+getPhyloNames_noCache<-function(speciesNames,nameType){
+      taxize_options(taxon_state_messages=T)
+      message("Looking for ",switch(nameType,sci="common",common="scientific")," names:\n")
+      outNames<-switch(nameType,
+                        common={pbapply::pbsapply(speciesNames,function(x){
+                          tmp<-suppressMessages(taxize::comm2sci(x)) #taxize is a noisy package...suppressing all feedback
+                          if(length(tmp[[1]])==0){tmp<-"no sci. name found"}
+                          message("\n  -", x,"  =  ",tmp,"\n")
+                          unlist(tmp)
+                          })
+                        },
+                        sci={pbapply::pbsapply(speciesNames,function(x){
+                            tmp<-suppressMessages(taxize::sci2comm(x))#taxize is a noisy package...suppressing all feedback
+                            #if common name not found in NCBI, try in EOL
+                            if(length(tmp[[1]])==0){
+                              tmpList<-taxize::sci2comm(x,simplify=FALSE,db="eol")[[1]]
+                              tmp<-subset(tmpList,tmpList$language=="en")$vernacularname[1]
+                              if(is.null(tmp)){tmp<-"no common name found"}
+                            }
+                            message("\n  -", x,"  =  ",tmp,"\n")
+                            unlist(tmp)
+                          })
+                        })
+    noms<-data.frame(common_name=switch(nameType,sci=outNames,common=speciesNames),scientific_name=switch(nameType,sci=speciesNames,common=outNames),row.names = NULL)
+
+invisible(noms)
+}
+
+getPhyloNames<-function(speciesNames,nameType,clearCache=F){
+#check for cached species names, cuz taxize is slooooow
+  tmpfile_names<-fs::path(tempdir(),"phylonamescache",ext="rds")
+
+  #Delete cache file if requested
+  if(clearCache){unlink(tmpfile_names)}
+
+    #If there's no cache, look things up
+    if(!file.exists(tmpfile_names)){
+      taxa_final<-getPhyloNames_noCache(speciesNames,nameType)
+      saveRDS(taxa_final,tmpfile_names)
+
+    #if there is a cache, see if it needs to be updated with new rows
+    }else{
+      taxa_cached<-readRDS(tmpfile_names)
+      message("\nChecking cached species records\n")
+      species_missing<-speciesNames[which(is.na(match(speciesNames,taxa_cached[,switch(nameType,
+                                                                                sci="scientific_name",
+                                                                                common="common_name")])))]
+      #subset cached by the requested species records
+      if(length(species_missing)==0){
+        taxa<-taxa_cached
+        test1=F
+      }else{
+        taxa_new<-getPhyloNames_noCache(species_missing,nameType)
+        taxa<-rbind(taxa_cached,taxa_new)
+        #I'll wait till later to write RDS, b/c I want to see if these are valid entries
+        test1=T
+      }
+      goodRows<-match(speciesNames,taxa[,switch(nameType,sci="scientific_name",common="common_name")])
+      taxa_final<-taxa[goodRows,]
+
+      #Do some error checking
+      #if all of common or scientific names contain "found" as in were not found, suggest changing nameType,
+      #or if some of the records have the same scientific and common name
+
+      #Output results to user
+      message("\n",rep("-",35),"\n Taxonomic Name Results\n",rep("-",35))
+      print(taxa_final)
+      message(rep("-",35))
+
+      #Error checking
+      if(nrow(taxa_final)==sum(grepl("found",taxa_final[,1]))|
+         nrow(taxa_final)==sum(grepl("found",taxa_final[,2]))){stop("\nSomething's weird here. Did you set the right nameType?\n")}
+
+      #warn if sci and common names match
+      if(sum((taxa_final[,1]==taxa_final[,2]))>0){warning("Double check output. You've got some matching scientific and common names. Did you supply the correct nameType?")
+        test2=F
+        }else{test2=T}
+
+    #Warn about individual no matches
+    if(sum(grepl("found",taxa_final))>0){
+      noMatch.indx<-which(apply(taxa_final,c(1,2),function(x) grepl("found",x)),arr.ind=T)
+      noMatch<-taxa_final[noMatch.indx[,"row"],ifelse(noMatch.indx[,"col"]==1,2,1)[1]]
+      warning("No match for: \n   -",paste0( noMatch,collapse="\n   -" ),"\n")
+      test3=F
+    }else{test3=T}
+
+      #save to cache if all 3 tests pass
+      try(if(test1&test2&test3){saveRDS(taxa,tmpfile_names)})
+
+      invisible(taxa_final)
+    }
+    }
+
+
+
 showPhylo<-function(speciesNames,nameType="common",pic="phylopic"){
   #Try to match common names to scientific names, and stop if there's no match
 if(nameType=="common"){
