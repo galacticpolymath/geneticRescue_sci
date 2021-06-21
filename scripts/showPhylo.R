@@ -31,12 +31,12 @@ getPhyloNames<-function(speciesNames,nameType,clearCache=F){
   tmpfile_names<-fs::path(tempdir(),"phylonamescache",ext="rds")
 
   #Delete cache file if requested
-  if(clearCache){unlink(tmpfile_names)}
+  if(clearCache){unlink(tmpfile_names);message("\n@cache cleared\n")}
 
     #If there's no cache, look things up
     if(!file.exists(tmpfile_names)){
       taxa_final<-getPhyloNames_noCache(speciesNames,nameType)
-      saveRDS(taxa_final,tmpfile_names)
+      test1=T #We'll consider saving this to cache
 
     #if there is a cache, see if it needs to be updated with new rows
     }else{
@@ -57,6 +57,9 @@ getPhyloNames<-function(speciesNames,nameType,clearCache=F){
       }
       goodRows<-match(speciesNames,taxa[,switch(nameType,sci="scientific_name",common="common_name")])
       taxa_final<-taxa[goodRows,]
+    }
+
+    #Everything below is regardless of whether cache existed or not
 
       #Do some error checking
       #if all of common or scientific names contain "found" as in were not found, suggest changing nameType,
@@ -85,74 +88,47 @@ getPhyloNames<-function(speciesNames,nameType,clearCache=F){
     }else{test3=T}
 
       #save to cache if all 3 tests pass
-      try(if(test1&test2&test3){saveRDS(taxa,tmpfile_names)})
+      if(test1&test2&test3){
+        saveRDS(taxa,tmpfile_names)
+        message("\n@cache updated")
+        }else{
+          if(test1==F){message("\n@Records already in cache")
+            }else{message("\n@not saved to cache (because of potential errors)")}
+        }
 
       invisible(taxa_final)
-    }
-    }
 
-
-
-showPhylo<-function(speciesNames,nameType="common",pic="phylopic"){
-  #Try to match common names to scientific names, and stop if there's no match
-if(nameType=="common"){
-  sci_search<-taxize::comm2sci(speciesNames,simplify=FALSE)
-  #replace missings with NA
-  sci_search[which(sapply(sci_search,length)==0)]<-NA
-  sci_search<-unlist(sci_search)
-  noms<-data.frame(common_name=names(sci_search),scientific_name=unlist(sci_search),row.names = NULL)
-  #print scientific and common names for error checking
-  message("\n",rep("-",35),"\n Here's what we found\n",rep("-",35))
-  print(noms)
-  message(rep("-",35))
-  #if
-  tip<-if(length(noms$scientific_name)==sum(is.na(noms$scientific_name))){"Are these common names or did you mean to set nameType='sci'?"}else{"Try a different common name."}
-
-  #if no matches ask if they meant to input scientific names
-  if(sum(is.na(noms$scientific_name))>0){stop("No match for: \n   -",paste0( noms$common_name[which(is.na(noms$scientific_name))],collapse="\n   -" ),"\n\n*",tip)}
-}else{
-  sci_search<-speciesNames
 }
 
+
+
+showPhylo<-function(speciesNames,nameType,pic="phylopic"){
+if(missing(nameType)){stop("\nPlease supply a nameType; either 'sci' or 'common'")}
+# 1. Lookup, error check, & compile a df of sci and common names --------------
+spp<-getPhyloNames(speciesNames,nameType)
+
 #Now search for matches to scientific names in Open Tree of Life
-tol_taxa<-tnrs_match_names(sci_search,do_approximate_matching = F)
-print(tol_taxa[,c(1:2)])
-#if there are no matches, ask if they meant to input common names
-if(sum(is.na(tol_taxa$unique_name))==nrow(tol_taxa)){stop("\n *Are these scientific names or did you mean to set nameType='common'?")}
-
-###########################################################################
-# Add common names --------------------------------------------------------
-#If nameType is sci, look up common names, otherwise skip this
-if(nameType!="common"){
-#assign common names to tol_taxa
-common_names1<-taxize::sci2comm(tol_taxa$unique_name,simplify=FALSE,db="ncbi")
-
-#try to fill in blanks with EOL common names if there are missings
-common_names2 <- sapply(1:length(common_names1),function(i) {
-  if(length(common_names1[[i]])==0){
-  namez<-taxize::sci2comm(tol_taxa$unique_name[i],simplify=FALSE,db="eol")[[1]]
-  namez2 <- subset(namez,namez$language=="en")$vernacularname[1]
-  if(is.null(namez2)){namez2<-"no common name found"}
-  namez2
-  }else{common_names1[[i]]}
-  })
-#if common names were supplied initially, use those
-}else{common_names2<-speciesNames}
-
+message("\n Trying to match scientific names with Open Tree of Life")
+tol_taxa<-tnrs_match_names(spp$scientific_name,do_approximate_matching = F)
+message(rep("-",35),"\nOTL matching results\n",rep("-",35))
+print(tol_taxa[,])
+message(rep("-",35))
+#if there are no matches, throw error
+if(sum(is.na(tol_taxa$unique_name)>0)){stop("\n *Some species records not matched. Try changing your search terms.")}
 
 # tidying/flagging extinct ------------------------------------------------
 #pull out "extinct" flag to add qualifier for extinct taxa
 tol_taxa$extinct<-ifelse(grepl("extinct",tol_taxa$flags,fixed=T)," \"*Extinct*\"","")
 #make consistent common name capitalization and add extinction flag if appropriate
-tol_taxa$common_name<-paste0("(",tools::toTitleCase(common_names2),")",tol_taxa$extinct)
+tol_taxa$common_name<-paste0("(",tools::toTitleCase(spp$common_name),")",tol_taxa$extinct)
 
 
 ###########################################################################
 # Make tree from scientific names in tol_taxa -----------------------------
 
 tryCatch(
-  tree<-tol_induced_subtree(ott_id(tol_taxa),label="name"),error=function(e) message("\n! Tree Build FAILED\n* The Tree of Life Open Taxonomy system doesn't work super well with extinct organisms sometimes. Try removing them from your set.")
-  )
+  tree<-suppressWarnings(tol_induced_subtree(ott_id(tol_taxa),label="name")),error=function(e) message("\n! Tree Build FAILED\n* The Tree of Life Open Taxonomy system doesn't work super well with extinct organisms sometimes. Try removing them from your set."))
+
 
 #make an index to go between tree tips and tol_taxa object
 tipIndx<-match(tree$tip.label,gsub(" ","_",tol_taxa$unique_name))
@@ -161,7 +137,7 @@ tree$tip.label<-gsub(" ","~",paste0("atop(bolditalic(",tol_taxa$unique_name[tipI
 
 
 # Look up and cache phylopic image UIDs in an efficient manner ------------
-  if(pic="phylopic"){
+  if(pic=="phylopic"){
     #check for cached phylopic UIDs, cuz this is slooooow
     tmpfile_uid<-fs::path(tempdir(),"phyloUIDcache",ext="rds")
     if(!file.exists(tmpfile_uid)){
@@ -172,7 +148,7 @@ tree$tip.label<-gsub(" ","~",paste0("atop(bolditalic(",tol_taxa$unique_name[tipI
     pic_uid_cached<-readRDS(tmpfile_uid)
     noncached_taxa<-tree$tip.label.backup[which(is.na(match(tree$tip.label.backup,pic_uid_cached$name)))]
     if(length(noncached_taxa)==0){
-      pic_uid<-pic_uid_cached
+      pic_uid<-subset(pic_uid_cached,pic_uid_cached$name%in%tree$tip.label.backup)
       }else{
       #lookup and append the missing taxa to cache
         message("\nLooking up Phylopic IDs for taxa not already cached:\n  -",paste0(noncached_taxa,collapse="\n  -"))
@@ -181,14 +157,19 @@ tree$tip.label<-gsub(" ","~",paste0("atop(bolditalic(",tol_taxa$unique_name[tipI
       saveRDS(pic_uid,tmpfile_uid)
       }
     }
+  }
 #rewrite tip labels so we have bold italic scientific name over parenthetical common name
 
-
-ggtree(tree)+xlim(0,5+(length(speciesNames)))+geom_tiplab(geom='label',vjust=0.5,hjust=0,parse=T,offset=2,align=1,label.padding=unit(.5,"lines"))+
-  geom_tiplab(image=pic_uid$uid,geom="phylopic",color="slategrey",size=.07,offset=0.5)
+ggtree(tree)+xlim(0,5+(length(speciesNames)))+
+  geom_tiplab(geom='label',vjust=0.5,hjust=0,parse=T,offset=2,align=1,label.padding=unit(.5,"lines"))+
+  {
+  if(pic=="phylopic"){
+    geom_tiplab(image=pic_uid$uid,geom="phylopic",color="slategrey",size=.1,offset=0.5,alpha=1)}else{}
+  }
+}
 #+length(speciesNames)/20))
 #+geom_hilight(node=5,fill="gold")
-}
+
 
 
 speciesNames <- c("Florida manatee","giraffe","barn swallow","ocelot","domestic cat","leopard","platypus","swifts")
