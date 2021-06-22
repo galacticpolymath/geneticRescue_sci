@@ -102,7 +102,7 @@ getPhyloNames<-function(speciesNames,nameType,clearCache=F){
 
 
 
-showPhylo<-function(speciesNames,nameType,pic="phylopic"){
+showPhylo<-function(speciesNames,nameType,pic="phylopic",picSize=.08,dateTree=T){
 if(missing(nameType)){stop("\nPlease supply a nameType; either 'sci' or 'common'")}
 # 1. Lookup, error check, & compile a df of sci and common names --------------
 spp<-getPhyloNames(speciesNames,nameType)
@@ -130,10 +130,18 @@ tryCatch(
   tree<-suppressWarnings(tol_induced_subtree(ott_id(tol_taxa),label="name")),error=function(e) message("\n! Tree Build FAILED\n* The Tree of Life Open Taxonomy system doesn't work super well with extinct organisms sometimes. Try removing them from your set."))
 
 
+
+# Dating the tree ---------------------------------------------------------
+if(dateTree){
+  tree_final<-datelife::datelife_search(tree,summary_format="phylo_median")
+}else{tree_final<-tree}
+
+
+# This modifies tip.labels destructively ----------------------------------
 #make an index to go between tree tips and tol_taxa object
-tipIndx<-match(tree$tip.label,gsub(" ","_",tol_taxa$unique_name))
-tree$tip.label.backup<-tree$tip.label
-tree$tip.label<-gsub(" ","~",paste0("atop(bolditalic(",tol_taxa$unique_name[tipIndx],"),",tol_taxa$common_name[tipIndx],")") )
+tree_final$tip.label.backup<-tree_final$tip.label
+tipIndx<-match(tree_final$tip.label.backup,gsub(" ","_",tol_taxa$unique_name))
+tree_final$tip.label<-gsub(" ","~",paste0("atop(bolditalic(",tol_taxa$unique_name[tipIndx],"),",tol_taxa$common_name[tipIndx],")") )
 
 
 # Look up and cache phylopic image UIDs in an efficient manner ------------
@@ -141,30 +149,55 @@ tree$tip.label<-gsub(" ","~",paste0("atop(bolditalic(",tol_taxa$unique_name[tipI
     #check for cached phylopic UIDs, cuz this is slooooow
     tmpfile_uid<-fs::path(tempdir(),"phyloUIDcache",ext="rds")
     if(!file.exists(tmpfile_uid)){
-    pic_uid<-ggimage::phylopic_uid(tree$tip.label.backup)
+    pic_uid<-ggimage::phylopic_uid(tree_final$tip.label.backup)
     saveRDS(pic_uid,tmpfile_uid)
     }else{
     #if we've already cached phylo info, compare new names and see if we can just tack on a few more
     pic_uid_cached<-readRDS(tmpfile_uid)
-    noncached_taxa<-tree$tip.label.backup[which(is.na(match(tree$tip.label.backup,pic_uid_cached$name)))]
+    noncached_taxa<-tree_final$tip.label.backup[which(is.na(match(tree_final$tip.label.backup,pic_uid_cached$name)))]
     if(length(noncached_taxa)==0){
-      pic_uid<-subset(pic_uid_cached,pic_uid_cached$name%in%tree$tip.label.backup)
+      pic_uid_final<-pic_uid_cached[match(tree_final$tip.label.backup,pic_uid_cached$name),]
       }else{
       #lookup and append the missing taxa to cache
         message("\nLooking up Phylopic IDs for taxa not already cached:\n  -",paste0(noncached_taxa,collapse="\n  -"))
       pic_uid_new<-ggimage::phylopic_uid(noncached_taxa)
       pic_uid<-rbind(pic_uid_cached,pic_uid_new)
       saveRDS(pic_uid,tmpfile_uid)
+      #now filter out to just the relevant ones
+      pic_uid_final<-pic_uid[match(tree_final$tip.label.backup,pic_uid$name),]
       }
     }
   }
-#rewrite tip labels so we have bold italic scientific name over parenthetical common name
 
-ggtree(tree)+xlim(0,5+(length(speciesNames)))+
-  geom_tiplab(geom='label',vjust=0.5,hjust=0,parse=T,offset=2,align=1,label.padding=unit(.5,"lines"))+
+
+# Plot that beautiful tree :) ---------------------------------------------
+g0<-ggtree(tree_final)
+timescale<-ggplot2::layer_scales(g0)$x$get_limits()[2]
+timescale_rounded <- ceiling(timescale/10)*10
+yscale<-ggplot2::layer_scales(g0)$y$get_limits()
+textOffset=.15*timescale
+picOffset=textOffset/2
+backgroundRec<-data.frame(xmin=timescale+picOffset-(picSize*timescale*.7),xmax=timescale+picOffset+(picSize*timescale*.7),
+                          ymin=yscale[1]-.5,ymax=yscale[2]+.5)
+
+#Define custom theme to override a lot of ggtree's styling (if we want to plot)
+theme_phylo<-ggplot2::theme(plot.margin=ggplot2::margin(0,0,30,0,unit="pt"),axis.line.x=element_line(color=1),
+                            axis.ticks.x=element_line(color=1),axis.ticks.length.x=unit(3,"pt"),
+                            axis.title.x=element_text(margin=margin(20,0,5,0),face="bold",size=18),
+                            axis.text.x=element_text(color=1,size=12),
+                            panel.border=element_blank())
+#Rescale to have a 50% buffer on the right to add text
+g0+theme_phylo+scale_x_continuous(breaks=seq(timescale,0,-timescale/10),limits=c(0,timescale*1.6),labels=round(seq(0,timescale,timescale/10)))+
+  xlab("Million Years Ago (Ma)")+
+
+  #Add text labels connected to phylogeny tips by a dotted line
+  geom_tiplab(geom='label',vjust=0.5,hjust=0,parse=T,offset=textOffset,align=T,color="black",label.padding=unit(.5,"lines"))+
+
+  #add semitransparent rectangle between dotted line and phylopic
+  #geom_rect(inherit.aes=F,data=backgroundRec,aes(xmin=xmin,ymin=ymin, xmax=xmax,ymax=ymax),fill="white",alpha=.7)+
   {
   if(pic=="phylopic"){
-    geom_tiplab(image=pic_uid$uid,geom="phylopic",color="slategrey",size=.1,offset=0.5,alpha=1)}else{}
+    geom_tiplab(image=pic_uid_final$uid,geom="phylopic",color="gray20",hjust=0.5,size=picSize,offset=picOffset,alpha=1)}else{}
   }
 }
 #+length(speciesNames)/20))
@@ -176,5 +209,8 @@ speciesNames <- c("Florida manatee","giraffe","barn swallow","ocelot","domestic 
 showPhylo(speciesNames,nameType="common")
 
 #input
-speciesNames<- c("Tachycineta bicolor","Homo","Hirundo rustica","Hirundo aethiopica","Zonotrichia leucophrys","Sturnus vulgaris","Tyrannosaurus rex","rattus norvegicus","Stegosaurus")
+speciesNames<- c("Tachycineta bicolor","Homo","Hirundo rustica","Hirundo aethiopica","Zonotrichia leucophrys","Sturnus vulgaris","Tyrannosaurus rex","rattus norvegicus","Phoenicoparrus jamesi")
 showPhylo(speciesNames,nameType="sci")
+
+showPhylo(c("domestic cat","human","puma","leopard","jaguar"),"common")
+
