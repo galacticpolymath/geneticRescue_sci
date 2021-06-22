@@ -1,20 +1,35 @@
-getPhyloNames_noCache<-function(speciesNames,nameType){
-      taxize_options(taxon_state_messages=T)
-      message("Looking for ",switch(nameType,sci="common",common="scientific")," names:\n")
+getPhyloNames_noCache<-function(speciesNames,nameType,quiet=T){
+      taxize::taxize_options(taxon_state_messages=quiet)
+    #allow for abbreviated nameType specification
+      if(substr(nameType,1,1)=="s"){nameType <- "sci"}else{nameType <- "common"}
+      message("Looking for ",switch(nameType,sci="common",common="scientific")," names in NCBI:\n")
       outNames<-switch(nameType,
                         common={pbapply::pbsapply(speciesNames,function(x){
-                          tmp<-suppressMessages(taxize::comm2sci(x)) #taxize is a noisy package...suppressing all feedback
+                          tmp<-if(quiet){suppressMessages(taxize::comm2sci(x)) }else{taxize::comm2sci(x)}
+                          #if common name not found in NCBI, try in EOL
+                            if(length(tmp[[1]])==0){
+                              tmpList<-if(quiet){suppressMessages(taxize::comm2sci(x,simplify=FALSE,db="eol")[[1]])
+                                      }else{taxize::comm2sci(x,simplify=FALSE,db="eol")[[1]]}
+                                tmp<-tmpList$name[1]
+
+                              if(is.null(tmp)){tmp<-"no common name found"
+                                }else{message("\n ! ",nameType," name for ",x," not found in NCBI; using top hit in EOL: ",tmp,"\n")}
+                            }
+
                           if(length(tmp[[1]])==0){tmp<-"no sci. name found"}
                           message("\n  -", x,"  =  ",tmp,"\n")
                           unlist(tmp)
                           })
                         },
                         sci={pbapply::pbsapply(speciesNames,function(x){
-                            tmp<-suppressMessages(taxize::sci2comm(x))#taxize is a noisy package...suppressing all feedback
+                            tmp<-if(quiet){suppressMessages(taxize::sci2comm(x))}else{
+                              taxize::sci2comm(x)}#taxize is a noisy package...suppressing all feedback
                             #if common name not found in NCBI, try in EOL
                             if(length(tmp[[1]])==0){
-                              tmpList<-taxize::sci2comm(x,simplify=FALSE,db="eol")[[1]]
-                              tmp<-subset(tmpList,tmpList$language=="en")$vernacularname[1]
+                              tmpList<-if(quiet){suppressMessages(taxize::sci2comm(x,simplify=FALSE,db="eol")[[1]])
+                                      }else{taxize::sci2comm(x,simplify=FALSE,db="eol")[[1]]}
+                                tmp<-subset(tmpList,tmpList$language=="en")$vernacularname[1]
+
                               if(is.null(tmp)){tmp<-"no common name found"}
                             }
                             message("\n  -", x,"  =  ",tmp,"\n")
@@ -35,23 +50,37 @@ require(WikipediR); require(rvest)
 #x= search string (i.e. a title of a Wikipedia page); or a vector of search string(s)
 #width= desired width in pixels (220 px thumbnail by default)
 #savedest= save destination; wd by default
-getWikiPic<-function(x,width=220,picSaveDir=tempdir(),quiet=T,openDir=F){
+getWikiPic<-function(x,width=220,picSaveDir=tempdir(),quiet=T,openDir=F,clearCache=F){
   message("\n",rep("-",50),"\n  Downloading Wikipedia Pics\n",rep("-",50))
+  if(clearCache){unlink(picSaveDir)}#delete cache if requested
   dir.create(picSaveDir,showWarnings=!quiet)
   imgs<-pbapply::pblapply(x, function (ttl,...){
-    savefilename<-fs::path(picSaveDir,paste0(gsub(" ","_",ttl),"_",width,"px"),ext=ext)
+    savefilename<-fs::path(picSaveDir,paste0(gsub(" ","_",ttl),"_",width,"px"),ext="jpeg")
           #Check if exists. Don't download if it does
           if(!file.exists(savefilename)){
-              d<-page_info("en","wikipedia",page=ttl,clean_response=T,ext="jpeg")
+              d<-WikipediR::page_info("en","wikipedia",page=ttl,clean_response=T,ext="jpeg")
               url<-d[[1]]$fullurl
-              wikipage<-rvest::session(url)
-              imginfo<-wikipage %>% rvest::html_elements("tr:nth-child(2) img")
-              img.url0<- imginfo[1] %>% rvest::html_attr("src")
-              img.url<-paste0("https:",img.url0)
-              if(width!=220){img.url<-gsub("/220px-",paste0("/",width,"px-"),img.url)}
-              download.file(img.url,savefilename,quiet=quiet)
-              message("\n Img saved for ",ttl,": ",basename(img.url),"\n")#tell user original filename (or error)
-          }else{message("\n **Skipping ",ttl,"; already downloaded.**\n")}
+              wikipage<-if(quiet){suppressWarnings(rvest::session(url))}else{rvest::session(url)}
+              #check if there's a wiki page for this
+              if(wikipage$response$status_code!=404){
+                imginfo<-rvest::html_elements(wikipage,".infobox img")
+                img.url0<- rvest::html_attr(imginfo[1] ,"src")
+                img.url<-paste0("https:",img.url0)
+                  if(width!=220){
+                    img.url<-gsub("/220px-",paste0("/",width,"px-"),img.url)
+                  }
+
+                dlTest <- try(download.file(img.url,savefilename,quiet=quiet),silent=quiet)
+                if(inherits(dlTest,"try-error")){
+                  message("\n Img download failed for '",ttl,"'.\n")
+                  savefilename <- NA
+                  }else{ message("\n Img saved for ",ttl,": ",basename(img.url),"\n")}#tell user original filename (or error)
+              }else{
+                #if there is a 404 code
+                savefilename <- NA
+                message("\n!! No Wikipedia page found for ",ttl,"!!\n")
+              }
+          }else{message("\n  Skipping ",ttl,"; already downloaded.**\n")}
           savefilename
       },width,picSaveDir)#End lapply
 
@@ -68,7 +97,7 @@ getWikiPic<-function(x,width=220,picSaveDir=tempdir(),quiet=T,openDir=F){
 
 #############################
 ### GetPhyloNames BEGIN
-getPhyloNames<-function(speciesNames,nameType,clearCache=F){
+getPhyloNames<-function(speciesNames,nameType,clearCache=F,quiet=T){
 #check for cached species names, cuz taxize is slooooow
   tmpfile_names<-fs::path(tempdir(),"phylonamescache",ext="rds")
 
@@ -77,7 +106,7 @@ getPhyloNames<-function(speciesNames,nameType,clearCache=F){
 
     #If there's no cache, look things up
     if(!file.exists(tmpfile_names)){
-      taxa_final<-getPhyloNames_noCache(speciesNames,nameType)
+      taxa_final<-getPhyloNames_noCache(speciesNames,nameType,quiet=quiet)
       test1=T #We'll consider saving this to cache
 
     #if there is a cache, see if it needs to be updated with new rows
@@ -92,7 +121,7 @@ getPhyloNames<-function(speciesNames,nameType,clearCache=F){
         taxa<-taxa_cached
         test1=F
       }else{
-        taxa_new<-getPhyloNames_noCache(species_missing,nameType)
+        taxa_new<-getPhyloNames_noCache(species_missing,nameType,quiet=quiet)
         taxa<-rbind(taxa_cached,taxa_new)
         #I'll wait till later to write RDS, b/c I want to see if these are valid entries
         test1=T
@@ -131,7 +160,7 @@ getPhyloNames<-function(speciesNames,nameType,clearCache=F){
 
       #save to cache if all 3 tests pass
       if(test1&test2&test3){
-        saveRDS(taxa,tmpfile_names)
+        saveRDS(taxa_final,tmpfile_names)
         message("\n@cache updated")
         }else{
           if(test1==F){message("\n@Records already in cache")
@@ -144,14 +173,19 @@ getPhyloNames<-function(speciesNames,nameType,clearCache=F){
 
 
 
-showPhylo<-function(speciesNames,nameType,dateTree=T,labelOffset=0.15,pic="wiki",dotsConnectText=F,picSize=.08,picSaveDir=paste0(tempdir(),"/showPhylo"),openDir=F,xAxisMargin=20,textScalar=1,phyloThickness=1.5,phyloColor="#363636",textCol="#363636"){
-    if(missing(nameType)){stop("\nPlease supply a nameType; either 'sci' or 'common'")}
+
+
+showPhylo<-function(speciesNames,nameType,dateTree=T,labelOffset=0.26,pic="wiki",dotsConnectText=F,picSize=.08,picSaveDir=paste0(tempdir(),"/showPhylo"),openDir=F,xAxisMargin=20,textScalar=1,phyloThickness=1.2,phyloColor="#363636",textCol="#363636",plotMargins=c(t=.02,r=.18,b=.02,l=.02),clearCache=F,quiet=T){
+    if(missing(nameType)){stop("\nPlease supply the type of names you're providing; i.e. nameType= either 'sci' or 'common'")}
+    #allow for abbreviated nameType specification
+    if(substr(nameType,1,1)=="s"){nameType <- "sci"}else{nameType <- "common"}
     # 1. Lookup, error check, & compile a df of sci and common names --------------
-    spp<-getPhyloNames(speciesNames,nameType)
+    spp<-getPhyloNames(speciesNames,nameType,clearCache = clearCache,quiet=quiet)
 
     #Now search for matches to scientific names in Open Tree of Life
     message("\n Trying to match scientific names with Open Tree of Life")
-    tol_taxa<-tnrs_match_names(spp$scientific_name,do_approximate_matching = F)
+    message("\n *You may be asked to choose a number if there are multiple matches.\n")
+    tol_taxa<-rotl::tnrs_match_names(spp$scientific_name,do_approximate_matching = F)
     message(rep("-",35),"\nOTL matching results\n",rep("-",35))
     print(tol_taxa[,])
     message(rep("-",35))
@@ -165,19 +199,22 @@ showPhylo<-function(speciesNames,nameType,dateTree=T,labelOffset=0.15,pic="wiki"
     tol_taxa$common_name<-paste0("(",tools::toTitleCase(spp$common_name),")",tol_taxa$extinct)
 
 
-    ###########################################################################
     # Make tree from scientific names in tol_taxa -----------------------------
-
     tryCatch(
-      tree<-suppressWarnings(tol_induced_subtree(ott_id(tol_taxa),label="name")),error=function(e) message("\n! Tree Build FAILED\n* The Tree of Life Open Taxonomy system doesn't work super well with extinct organisms sometimes. Try removing them from your set."))
-
-
+      tree<-if(quiet){suppressWarnings(rotl::tol_induced_subtree(rotl::ott_id(tol_taxa),label="name"))
+            }else{rotl::tol_induced_subtree(rotl::ott_id(tol_taxa),label="name")},
+      error=function(e) message("\n! Tree Build FAILED\n* The Tree of Life Open Taxonomy system doesn't work super well with extinct organisms sometimes. Try removing them from your set."))
 
     # Dating the tree ---------------------------------------------------------
     if(dateTree){
-      tree_final<-datelife::datelife_search(tree,summary_format="phylo_median")
-    }else{tree_final<-tree}
+      #tryCatch({
+        message(rep("-",55),"\n Attempting to scale the tree to divergence times...\n",rep("-",55))
+        message(" Tip: If it takes more than a few seconds, it's probably going to fail.\n")
+        tree_final<-datelife::datelife_search(tree,summary_format="phylo_median")
 
+       #},error=function(e) {message("\n! Tree dating FAILED !\n Try setting quiet=F, removing taxa, or setting dateTree=F.\n")
+        # stop()})
+    }else{tree_final<-tree}
 
     # This modifies tip.labels destructively ----------------------------------
     #make an index to go between tree tips and tol_taxa object
@@ -190,8 +227,12 @@ showPhylo<-function(speciesNames,nameType,dateTree=T,labelOffset=0.15,pic="wiki"
       if(pic=="phylopic"){
         #check for cached phylopic UIDs, cuz this is slooooow
         tmpfile_uid<-fs::path(tempdir(),"phyloUIDcache",ext="rds")
+        #delete cache if requested
+        if(clearCache){unlink(tmpfile_uid)}
+
         if(!file.exists(tmpfile_uid)){
-        pic_uid<-ggimage::phylopic_uid(tree_final$tip.label.backup)
+        message(rep("-",45),"\n  Looking for PhyloPics for your species...(slow)\n",rep("-",45))
+        pic_uid<-do.call(rbind,  pbapply::pblapply(tree_final$tip.label.backup,function(x) ggimage::phylopic_uid(x)) )
         saveRDS(pic_uid,tmpfile_uid)
         }else{
         #if we've already cached phylo info, compare new names and see if we can just tack on a few more
@@ -201,8 +242,9 @@ showPhylo<-function(speciesNames,nameType,dateTree=T,labelOffset=0.15,pic="wiki"
           pic_uid_final<-pic_uid_cached[match(tree_final$tip.label.backup,pic_uid_cached$name),]
           }else{
           #lookup and append the missing taxa to cache
-            message("\nLooking up Phylopic IDs for taxa not already cached:\n  -",paste0(noncached_taxa,collapse="\n  -"))
-          pic_uid_new<-ggimage::phylopic_uid(noncached_taxa)
+          message(rep("-",45),"\n  Looking up Phylopic IDs for taxa not already cached:\n",rep("-",45))
+          message("\n\n  -",paste0(noncached_taxa,collapse="\n  -"))
+          pic_uid_new<-do.call(rbind,  pbapply::pblapply(noncached_taxa,function(x) ggimage::phylopic_uid(x)) )
           pic_uid<-rbind(pic_uid_cached,pic_uid_new)
           saveRDS(pic_uid,tmpfile_uid)
           #now filter out to just the relevant ones
@@ -211,13 +253,31 @@ showPhylo<-function(speciesNames,nameType,dateTree=T,labelOffset=0.15,pic="wiki"
         }
       }
 
+# Get Wikipedia main pic --------------------------------------------------
+
     if(pic=="wiki"){
-      wikiPics<-getWikiPic(tree_final$tip.label.backup)
+      wikiPics<-getWikiPic(tree_final$tip.label.backup,picSaveDir = picSaveDir,clearCache=clearCache)
+      wikiPics$name<-tree_final$tip.label.backup
+      #If scientific name didn't come up with anything, try common name
+      if(sum(is.na(wikiPics$img_loc))>0){
+        missingImgs<-which(is.na(wikiPics$img_loc))
+        common_names_in_order_of_tips<-gsub("\\(|\\)","",tol_taxa$common[match(tree_final$tip.label.backup,gsub(" ","_",tol_taxa$unique_name))])
+        #replace search_term with common name
+        wikiPics$search_term[missingImgs]<-common_names_in_order_of_tips[missingImgs]
+        #search again
+        message("Trying common name for missing species ")
+        wikiPics[missingImgs,1:2]<-getWikiPic(wikiPics$search_term[missingImgs],picSaveDir = picSavDir)
+      }
+
     }
 
 
     # Plot that beautiful tree :) ---------------------------------------------
-    g0<-ggtree(tree_final,size=phyloThickness,color=phyloColor)
+    #Define custom theme to override a lot of ggtree's styling (if we want to plot)
+    theme_phylo<-ggplot2::theme(plot.margin=ggplot2::margin(plotMargins,unit="npc"),
+                                panel.border=ggplot2::element_blank())
+
+    g0<-ggtree::ggtree(tree_final,size=phyloThickness,color=phyloColor)+theme_phylo
     timescale<-ggplot2::layer_scales(g0)$x$get_limits()[2]
     timescale_rounded <- ceiling(timescale/10)*10
     yscale<-ggplot2::layer_scales(g0)$y$get_limits()
@@ -226,46 +286,52 @@ showPhylo<-function(speciesNames,nameType,dateTree=T,labelOffset=0.15,pic="wiki"
     backgroundRec<-data.frame(xmin=timescale+picOffset-(picSize*timescale*.7),xmax=timescale+picOffset+(picSize*timescale*.7),
                               ymin=yscale[1]-.5,ymax=yscale[2]+.5)
 
-    #Define custom theme to override a lot of ggtree's styling (if we want to plot)
-    theme_phylo<-ggplot2::theme(plot.margin=ggplot2::margin(0,0,30,0,unit="pt"),axis.line.x=element_line(color=1),
-                                axis.ticks.x=element_line(color=1),axis.ticks.length.x=unit(3,"pt"),
-                                axis.title.x=element_text(margin=margin(xAxisMargin,0,5,0),face="bold",size=26*textScalar),
-                                axis.text.x=element_text(color=1,size=18*textScalar),
-                                panel.border=element_blank())
 
     #Rescale to have a 50% buffer on the right to add text
-    g0+theme_phylo+scale_x_continuous(breaks=seq(timescale,0,-timescale/10),
-                                      limits=c(0,timescale*1.6),labels=round(seq(0,timescale,timescale/10)))+
+    g <- g0+ggplot2::scale_x_continuous(breaks=seq(timescale,0,-timescale/10),
+                                      labels=round(seq(0,timescale,timescale/10)))+
       ggplot2::coord_cartesian(ylim=yscale,clip='off')+
-      annotate("text",x=timescale/2,y=yscale[1]-yscale[2]*.135, hjust=0.5,label="Millions of Years Ago (Ma)")+
-
       #Add text labels
-      geom_tiplab(geom='label',vjust=0.5,hjust=0,parse=T,offset=textOffset,align=dotsConnectText,
-                  color="black",label.padding=unit(.5,"lines"))+
+      ggtree::geom_tiplab(geom='label',vjust=0.5,hjust=0,parse=T,offset=textOffset,align=dotsConnectText,
+                  color="black",label.padding=ggplot2::unit(.5,"lines"))+
 
       #add semitransparent rectangle between dotted line and phylopic
       #geom_rect(inherit.aes=F,data=backgroundRec,aes(xmin=xmin,ymin=ymin, xmax=xmax,ymax=ymax),fill="white",alpha=.7)+
       {
         if(pic=="phylopic"){
-          geom_tiplab(image=pic_uid_final$uid,geom="phylopic",color="gray20",hjust=0.5,
+          ggtree::geom_tiplab(image=pic_uid_final$uid,geom="phylopic",color="gray20",hjust=0.5,
                       size=picSize,offset=picOffset,alpha=1)}else{}
       }+{
         if(pic=="wiki"){
-          geom_tiplab(image=wikiPics$img_loc,geom="image",size=picSize,offset=picOffset,alpha=1,hjust=0.5,asp=1)
+          ggtree::geom_tiplab(image=wikiPics$img_loc,geom="image",size=picSize,offset=picOffset,alpha=1,hjust=0.5,asp=1)
+        }else{}
+      }+
+      {
+        if(dateTree){
+            ggplot2::xlab("Millions of Years Ago (Ma)")+
+            theme(axis.ticks.x=ggplot2::element_line(color=phyloColor),
+                  axis.ticks.length.x=ggplot2::unit(3,"pt"),
+                  axis.title.x=ggplot2::element_text(margin=ggplot2::margin(xAxisMargin,0,5,0),face="bold",size=26*textScalar),
+                  axis.text.x=ggplot2::element_text(color=textCol,size=18*textScalar),
+                  axis.line.x=ggplot2::element_line(color=phyloColor))
         }else{}
       }
+    g
 }
-#+length(speciesNames)/20))
+
 #+geom_hilight(node=5,fill="gold")
 
 
 
-speciesNames <- c("Florida manatee","giraffe","barn swallow","ocelot","domestic cat","leopard","platypus","swifts")
-showPhylo(speciesNames,nameType="common")
+speciesNames <- c("Florida manatee","giraffe","barn swallow","ocelot","domestic cat","leopard","platypus")
+showPhylo(speciesNames,nameType="common",plotMargins = c(t=0,r=.25,b=.05,l=0),picSize=.12)
 
 #input
-speciesNames<- c("Tachycineta bicolor","Homo","Hirundo rustica","Hirundo aethiopica","Zonotrichia leucophrys","Sturnus vulgaris","Tyrannosaurus rex","rattus norvegicus","Phoenicoparrus jamesi")
-showPhylo(speciesNames,nameType="sci",pic="wiki")
-
-showPhylo(c("domestic cat","human","puma","leopard","jaguar"),"common",pic="wiki",picSize=.12,labelOffset=.26)
+speciesNames<- c("European starling","black rat","flamingo")
+showPhylo(speciesNames,nameType="common",pic="wiki",dateTree = F)
+#,"Greater saber-toothed cat"
+speciesNames<-c("domestic cat","Bengal tiger","puma","leopard","jaguar","cheetah","caracal")
+showPhylo(speciesNames,"c",pic="wiki",picSize=.12,labelOffset=.26)
+p
+ggtree::groupClade(p,node=6)+ggplot2::aes(color=group)+ggtree::geom_highlight(node=c(3,2,5))+geom_text(aes(label=node))
 ggsave("cats.png")
