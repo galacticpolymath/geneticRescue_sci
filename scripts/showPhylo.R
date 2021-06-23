@@ -220,7 +220,10 @@ showPhylo<-function(speciesNames,nameType,dateTree=T,labelOffset=0.26,pic="wiki"
     #make an index to go between tree tips and tol_taxa object
     tree_final$tip.label.backup<-tree_final$tip.label
     tipIndx<-match(tree_final$tip.label.backup,gsub(" ","_",tol_taxa$unique_name))
-    tree_final$tip.label<-gsub(" ","~",paste0("atop(bolditalic(",tol_taxa$unique_name[tipIndx],"),",tol_taxa$common_name[tipIndx],")") )
+    sci_tmp<-gsub(" ","~",tol_taxa$unique_name[tipIndx])
+    com_tmp<-gsub(" ","~",tol_taxa$common_name[tipIndx])
+    tree_final$tip.label<-paste0("atop(bolditalic(",sci_tmp,"),",
+                                              gsub("([^~()*]*'[^~()*]*)","\"\\1\"",fixed=F,com_tmp)    ,")")
 
 
     # Look up and cache phylopic image UIDs in an efficient manner ------------
@@ -266,7 +269,7 @@ showPhylo<-function(speciesNames,nameType,dateTree=T,labelOffset=0.26,pic="wiki"
         wikiPics$search_term[missingImgs]<-common_names_in_order_of_tips[missingImgs]
         #search again
         message("Trying common name for missing species ")
-        wikiPics[missingImgs,1:2]<-getWikiPic(wikiPics$search_term[missingImgs],picSaveDir = picSavDir)
+        wikiPics[missingImgs,1:2]<-getWikiPic(wikiPics$search_term[missingImgs],picSaveDir = picSaveDir)
       }
 
     }
@@ -305,18 +308,20 @@ showPhylo<-function(speciesNames,nameType,dateTree=T,labelOffset=0.26,pic="wiki"
         if(pic=="wiki"){
           ggtree::geom_tiplab(image=wikiPics$img_loc,geom="image",size=picSize,offset=picOffset,alpha=1,hjust=0.5,asp=1)
         }else{}
-      }+
-      {
-        if(dateTree){
-            ggplot2::xlab("Millions of Years Ago (Ma)")+
-            theme(axis.ticks.x=ggplot2::element_line(color=phyloColor),
+      }+{
+        if(dateTree==T){
+         ggplot2::xlab("Millions of Years Ago (Ma)")
+        }else{}
+      }
+    #dateTree formatting has to be in 2 steps cuz aPPARENTLY you can add 2 layers in 1 if/then :(
+    if(dateTree){
+    g+ggplot2::theme(axis.ticks.x=ggplot2::element_line(color=phyloColor),
                   axis.ticks.length.x=ggplot2::unit(3,"pt"),
                   axis.title.x=ggplot2::element_text(margin=ggplot2::margin(xAxisMargin,0,5,0),face="bold",size=26*textScalar),
                   axis.text.x=ggplot2::element_text(color=textCol,size=18*textScalar),
                   axis.line.x=ggplot2::element_line(color=phyloColor))
-        }else{}
-      }
-    g
+    }else{g}
+
 }
 
 #+geom_hilight(node=5,fill="gold")
@@ -324,14 +329,15 @@ showPhylo<-function(speciesNames,nameType,dateTree=T,labelOffset=0.26,pic="wiki"
 
 
 speciesNames <- c("Florida manatee","giraffe","barn swallow","ocelot","domestic cat","leopard","platypus")
-showPhylo(speciesNames,nameType="common",plotMargins = c(t=0,r=.25,b=.05,l=0),picSize=.12)
-
+G1<-showPhylo(speciesNames,nameType="common",plotMargins = c(t=0,r=.25,b=.05,l=0),picSize=.12)
+G1
 #input
-speciesNames<- c("European starling","black rat","flamingo")
-showPhylo(speciesNames,nameType="common",pic="wiki",dateTree = F)
+speciesNames<- c("European starling","Anna's hummingbird","flamingo")
+showPhylo(speciesNames,nameType="common",pic="wiki",dateTree =T ,picSize=.2,labelOffset=.4)
 #,"Greater saber-toothed cat"
 speciesNames<-c("domestic cat","Bengal tiger","puma","leopard","jaguar","cheetah","caracal")
 showPhylo(speciesNames,"c",pic="wiki",picSize=.12,labelOffset=.26)
 p
 ggtree::groupClade(p,node=6)+ggplot2::aes(color=group)+ggtree::geom_highlight(node=c(3,2,5))+geom_text(aes(label=node))
 ggsave("cats.png")
+
