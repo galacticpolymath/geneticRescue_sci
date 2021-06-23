@@ -173,9 +173,9 @@ getPhyloNames<-function(speciesNames,nameType,clearCache=F,quiet=T){
 
 
 
+####################################################################################################################
 
-
-showPhylo<-function(speciesNames,nameType,dateTree=T,labelOffset=0.26,pic="wiki",dotsConnectText=F,picSize=.08,picSaveDir=paste0(tempdir(),"/showPhylo"),openDir=F,xAxisMargin=20,textScalar=1,phyloThickness=1.2,phyloColor="#363636",textCol="#363636",plotMargins=c(t=.02,r=.18,b=.02,l=.02),clearCache=F,quiet=T){
+showPhylo<-function(speciesNames,nameType,dateTree=T,labelOffset=0.26,pic="wiki",dotsConnectText=F,picSize=.08,picSaveDir=paste0(tempdir(),"/showPhylo"),optPicWidth=200,picBorderWidth=10,picBorderCol="#363636",openDir=F,xAxisMargin=20,textScalar=1,xTitleScalar=1,phyloThickness=1.2,phyloColor="#363636",textCol="#363636",plotMargins=c(t=.02,r=.18,b=.02,l=.02),clearCache=F,quiet=T){
     if(missing(nameType)){stop("\nPlease supply the type of names you're providing; i.e. nameType= either 'sci' or 'common'")}
     #allow for abbreviated nameType specification
     if(substr(nameType,1,1)=="s"){nameType <- "sci"}else{nameType <- "common"}
@@ -196,7 +196,8 @@ showPhylo<-function(speciesNames,nameType,dateTree=T,labelOffset=0.26,pic="wiki"
     #pull out "extinct" flag to add qualifier for extinct taxa
     tol_taxa$extinct<-ifelse(grepl("extinct",tol_taxa$flags,fixed=T)," \"*Extinct*\"","")
     #make consistent common name capitalization and add extinction flag if appropriate
-    tol_taxa$common_name<-paste0("(",tools::toTitleCase(spp$common_name),")",tol_taxa$extinct)
+    tol_taxa$common_name<-paste0(tools::toTitleCase(spp$common_name),tol_taxa$extinct)
+    tol_taxa$searchNames.user<-speciesNames
 
 
     # Make tree from scientific names in tol_taxa -----------------------------
@@ -221,7 +222,7 @@ showPhylo<-function(speciesNames,nameType,dateTree=T,labelOffset=0.26,pic="wiki"
     tree_final$tip.label.backup<-tree_final$tip.label
     tipIndx<-match(tree_final$tip.label.backup,gsub(" ","_",tol_taxa$unique_name))
     sci_tmp<-gsub(" ","~",tol_taxa$unique_name[tipIndx])
-    com_tmp<-gsub(" ","~",tol_taxa$common_name[tipIndx])
+    com_tmp<-paste0("(",gsub(" ","~",tol_taxa$common_name[tipIndx]),")")
     tree_final$tip.label<-paste0("atop(bolditalic(",sci_tmp,"),",
                                               gsub("([^~()*]*'[^~()*]*)","\"\\1\"",fixed=F,com_tmp)    ,")")
 
@@ -257,22 +258,88 @@ showPhylo<-function(speciesNames,nameType,dateTree=T,labelOffset=0.26,pic="wiki"
       }
 
 # Get Wikipedia main pic --------------------------------------------------
-
+    #initialize addIMg
+    addImg=F
     if(pic=="wiki"){
       wikiPics<-getWikiPic(tree_final$tip.label.backup,picSaveDir = picSaveDir,clearCache=clearCache)
       wikiPics$name<-tree_final$tip.label.backup
       #If scientific name didn't come up with anything, try common name
       if(sum(is.na(wikiPics$img_loc))>0){
-        missingImgs<-which(is.na(wikiPics$img_loc))
-        common_names_in_order_of_tips<-gsub("\\(|\\)","",tol_taxa$common[match(tree_final$tip.label.backup,gsub(" ","_",tol_taxa$unique_name))])
-        #replace search_term with common name
-        wikiPics$search_term[missingImgs]<-common_names_in_order_of_tips[missingImgs]
-        #search again
-        message("Trying common name for missing species ")
-        wikiPics[missingImgs,1:2]<-getWikiPic(wikiPics$search_term[missingImgs],picSaveDir = picSaveDir)
+          missingImgs<-which(is.na(wikiPics$img_loc))
+          common_names_in_order_of_tips<-gsub("\\(|\\)","",
+                                              tol_taxa$common[match(tree_final$tip.label.backup,
+                                                                    gsub(" ","_",tol_taxa$unique_name))])
+          #replace search_term with common name
+          wikiPics$search_term[missingImgs]<-common_names_in_order_of_tips[missingImgs]
+          #search again
+          message("Trying common name for missing species ")
+          wikiPics[missingImgs,1:2]<-getWikiPic(wikiPics$search_term[missingImgs],picSaveDir = picSaveDir)
       }
-
+      addImg <- T
+      imgLoc<-wikiPics$img_loc
     }
+
+# Import custom images if supplied ----------------------------------------
+    if(pic=="cust"){
+      #check if images exist
+      message(rep("-",45),"\n Checking for custom species images in picSaveDir=\n  > ",picSaveDir,"\n",rep("-",50))
+      #Reorder tol_taxa to match tree as our Rosetta for matching file names
+      tol_taxa.orderedByTree<-tol_taxa[match(tree_final$tip.label.backup,gsub(" ","_",tol_taxa$unique_name)),]
+      #search_string
+      img_files<-list.files(fs::path(picSaveDir),pattern="\\.png|\\.jpeg|\\.jpg")
+      img_files.stndzd <- gsub(" |-","_",tolower(img_files))
+      speciesNames.stndzd<-gsub(" |-","_",tolower(tol_taxa.orderedByTree$searchNames.user))
+      IMGs <- sapply(speciesNames.stndzd,function(x){
+        img_indx<-grep(x,img_files.stndzd)
+        img_filename<-ifelse(length(img_indx)==0,NA,fs::path(picSaveDir,img_files[img_indx[1]]))#indx[1] is in case of multiple hits; take first
+      })
+      if(sum(is.na(IMGs)>0)){
+        warning("Missing images for:\n -",paste0(names(IMGs)[which(is.na(IMGs))],collapse=" -"))
+        }
+
+      # Manipulate images to make them display faster and add a border if requested
+      optImg_loc<-fs::path(picSaveDir,"opt_img_for_showPhylo")
+      #Delete cached optimized photos if clearCache==T
+      if(clearCache){unlink(optImg_loc)}
+
+      #make optimized pic folder if it doesn't exist
+      dir.create(optImg_loc,showWarnings = F)
+      message(rep("-",45),"\n Optimizing custom images\n  Params:",
+              "\n  |_ optPicWidth= ",optPicWidth,"px\n  |_ picBorderWidth= ",picBorderWidth,
+              "\n  |_ picBorderCol= ",picBorderCol,"\n",rep("-",50),"\n")
+      optimizedIMGs<-sapply(1:length(IMGs),function(i){
+        x<-IMGs[i]
+        if(is.na(x)){
+          warning(" - ","!! ",names(IMGs[i])," IMAGE MISSING")
+          NA
+        }else{
+          #preserves spaces, removes ext; Not sure if I should keep spaces, but respecting user's prefs
+          baseName<-gsub("^(.*)\\..*$","\\1",basename(x))
+          newfile<-fs::path(optImg_loc,paste0(baseName,"_",optPicWidth,"px"),ext="jpg")
+          if(file.exists(newfile)){
+            message(" - ",basename(newfile)," : Already exists")
+          }else{
+            #Work the image Magick
+            img<-magick::image_read(x)
+            #add border
+            if(picBorderWidth>0){
+              img<-magick::image_border(img,picBorderCol,paste0(picBorderWidth,"x",picBorderWidth))
+            }
+            #Rescale to desired pixel width
+            img<-magick::image_scale(img,optPicWidth)
+            #write optimized file
+            magick::image_write(img,newfile)
+            message(" - ",basename(newfile)," : SAVED")
+          }
+          newfile
+        }
+      })
+      addImg <- T
+      imgLoc<-optimizedIMGs
+       #If requested,open the containing folder
+    if(openDir){system(paste0("open ",optImg_loc))}
+    }#end custom image code
+
 
 
     # Plot that beautiful tree :) ---------------------------------------------
@@ -280,7 +347,10 @@ showPhylo<-function(speciesNames,nameType,dateTree=T,labelOffset=0.26,pic="wiki"
     theme_phylo<-ggplot2::theme(plot.margin=ggplot2::margin(plotMargins,unit="npc"),
                                 panel.border=ggplot2::element_blank())
 
+    #Define basic tree plot before modifying in steps
     g0<-ggtree::ggtree(tree_final,size=phyloThickness,color=phyloColor)+theme_phylo
+
+    #Extract some info from base plot
     timescale<-ggplot2::layer_scales(g0)$x$get_limits()[2]
     timescale_rounded <- ceiling(timescale/10)*10
     yscale<-ggplot2::layer_scales(g0)$y$get_limits()
@@ -290,29 +360,31 @@ showPhylo<-function(speciesNames,nameType,dateTree=T,labelOffset=0.26,pic="wiki"
                               ymin=yscale[1]-.5,ymax=yscale[2]+.5)
 
 
+
     #Rescale to have a 50% buffer on the right to add text
     g <- g0+ggplot2::scale_x_continuous(breaks=seq(timescale,0,-timescale/10),
-                                      labels=round(seq(0,timescale,timescale/10)))+
+                                      labels=round(seq(0,timescale,timescale/10)))  +
       ggplot2::coord_cartesian(ylim=yscale,clip='off')+
       #Add text labels
-      ggtree::geom_tiplab(geom='label',vjust=0.5,hjust=0,parse=T,offset=textOffset,align=dotsConnectText,
-                  color="black",label.padding=ggplot2::unit(.5,"lines"))+
+      ggtree::geom_tiplab(geom='text',vjust=0.5,hjust=0,parse=T,offset=textOffset,align=dotsConnectText,
+                  color=textCol,label.padding=ggplot2::unit(1,"lines"),size=6*textScalar)  +
 
       #add semitransparent rectangle between dotted line and phylopic
       #geom_rect(inherit.aes=F,data=backgroundRec,aes(xmin=xmin,ymin=ymin, xmax=xmax,ymax=ymax),fill="white",alpha=.7)+
       {
         if(pic=="phylopic"){
-          ggtree::geom_tiplab(image=pic_uid_final$uid,geom="phylopic",color="gray20",hjust=0.5,
+          ggtree::geom_tiplab(image=pic_uid_final$uid,geom="phylopic",color=textCol,hjust=0.5,
                       size=picSize,offset=picOffset,alpha=1)}else{}
       }+{
-        if(pic=="wiki"){
-          ggtree::geom_tiplab(image=wikiPics$img_loc,geom="image",size=picSize,offset=picOffset,alpha=1,hjust=0.5,asp=1)
+        if(addImg){
+          ggtree::geom_tiplab(image=imgLoc,geom="image",size=picSize,offset=picOffset,alpha=1,hjust=0.5,asp=1)
         }else{}
       }+{
-        if(dateTree==T){
+        if(dateTree){
          ggplot2::xlab("Millions of Years Ago (Ma)")
         }else{}
       }
+
     #dateTree formatting has to be in 2 steps cuz aPPARENTLY you can add 2 layers in 1 if/then :(
     if(dateTree){
     g+ggplot2::theme(axis.ticks.x=ggplot2::element_line(color=phyloColor),
@@ -333,9 +405,9 @@ G1<-showPhylo(speciesNames,nameType="common",plotMargins = c(t=0,r=.25,b=.05,l=0
 G1
 #input
 speciesNames<- c("European starling","Anna's hummingbird","flamingo")
-showPhylo(speciesNames,nameType="common",pic="wiki",dateTree =T ,picSize=.2,labelOffset=.4)
+showPhylo(speciesNames,nameType="common",pic="wiki",dateTree =T ,picSize=.2)
 #,"Greater saber-toothed cat"
-speciesNames<-c("domestic cat","Bengal tiger","puma","leopard","jaguar","cheetah","caracal")
+speciesNames<-c("domestic cat","Bengal tiger","puma","leopard","jaguar","cheetah")
 showPhylo(speciesNames,"c",pic="wiki",picSize=.12,labelOffset=.26)
 p
 ggtree::groupClade(p,node=6)+ggplot2::aes(color=group)+ggtree::geom_highlight(node=c(3,2,5))+geom_text(aes(label=node))
