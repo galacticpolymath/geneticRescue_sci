@@ -3,7 +3,9 @@
 
 require(remotes)
 install_github("galacticpolymath/galacticPubs")
+install_github("galacticpolymath/galacticEdTools")
 library(galacticPubs)
+library(galacticEdTools)
 googledrive::drive_auth() #need to authorize your account first time you use this
 
 # Run this script to assemble the assets (e.g. graphs used for presentations,

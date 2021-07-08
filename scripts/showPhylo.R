@@ -430,8 +430,8 @@ showPhylo<-function(speciesNames,nameType,dateTree=T,labelOffset=0.3,aspectRatio
 
 
 
-speciesNames <- c("Florida manatee","giraffe","barn swallow","ocelot","domestic cat","leopard","platypus")
-G1<-showPhylo(speciesNames,nameType="common",plotMar = c(t=0,r=.25,b=.05,l=0),picSize=.12)
+speciesNames <- c("Dendroides canadensis","Lucanus elaphus","Danaus plexippus","Musca domestica","Carcinoscorpius rotundicauda")
+G1<-showPhylo(speciesNames,nameType="s",plotMar = c(t=0,r=.25,b=.05,l=0),picSize=.12,dateTree=T,picBorderCol = "red")
 G1
 #input
 speciesNames<- c("European starling","Anna's hummingbird","flamingo")
