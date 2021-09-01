@@ -30,7 +30,7 @@ targetSubject<-c("science") #Delete all but target
 
 # **Consider adding a comment explaining what each script does
 
-runLessonScripts()
+runLessonScripts(skip="fragmentation_map.R")
 
 
 
