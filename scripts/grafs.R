@@ -1,5 +1,5 @@
 require(pacman)
-p_load(writexl,ggplot2,ggh4x,lubridate,dplyr,gganimate)
+p_load(readxl,ggplot2,ggh4x,lubridate,dplyr,gganimate,galacticPubs,galacticEdTools,av,cowplot)
 p_surv<-read_xlsx("data/Florida-panther-survival-data.xlsx",2)
 g_surv <- read_xlsx("data/guppy-survival.xlsx",2)
 p_pop<-read_xlsx("data/Florida-panther-pop-size-and-heterozygosity_1985-2013.xlsx",2)
@@ -40,11 +40,11 @@ pTitle <- "Minimum FL Panther Population Estimate"
 pYlab <- "Panthers"
 
 # 1985-1994
-ggplot(p_pop,aes(Year,MinPopEst))+geom_point()+ggGalactic(font.cex=1.5)+ylim(0,150)+theme(axis.ticks.length.x = unit(5,"pt"))+ylab(pYlab)+ggtitle(pTitle)+
+ggplot(p_pop,aes(Year,MinPopEst))+geom_point()+theme_galactic(font.cex=1.5)+ylim(0,150)+theme(axis.ticks.length.x = unit(5,"pt"))+ylab(pYlab)+ggtitle(pTitle)+
   #add minor ticks (who'd've thought this would be so complicated?!)
   scale_x_continuous(limits=c(1985,1994),minor_breaks = 1985:1994,breaks=seq(1985,1994,2))+
-  guides(x="axis_minor")+theme(axis.ticks.length.x=unit(0.5,"cm"),ggh4x.axis.ticks.length.minor = rel(0.3),plot.title=element_text(face="plain",size=30))+
-  ggtitle("Genetic Rescue of Florida Panthers")+theme(plot.title=element_text(family="montserrat",face="plain"))
+  theme(axis.ticks.length.x=unit(0.5,"cm"),plot.title=element_text(face="plain",size=30))+
+  ggtitle("Genetic Rescue of Florida Panthers")
 ggsave("assets/panther-population_before.png",width=5,height=3.5)
 
 
@@ -52,113 +52,163 @@ ggsave("assets/panther-population_before.png",width=5,height=3.5)
 #Full X-axis, missing after genetic rescue
 p_pop %>% subset(.,Year<1996) %>%
 ggplot(.,aes(Year,MinPopEst))+geom_vline(xintercept=1995,col=gpColors("hy"),linetype=2)+
-  geom_point()+ggGalactic(font.cex=1.5)+theme(axis.ticks.length.x = unit(5,"pt"))+ylab("Minimum Population Est.")+
+  geom_point(size=2.5)+theme_galactic(font.cex=1.5,grid.wt.maj=.5,grid.wt.min=.3)+ylab("Minimum Population Est.")+
   scale_y_continuous(limits=c(0,150))+
-  annotate("rect",xmin=1995.15,xmax=2009,ymin=5,ymax=15,fill="white",alpha=.7)+
+  # annotate("rect",xmin=1995.15,xmax=2009,ymin=5,ymax=15,fill="white",alpha=.7)+
   annotate("text",x=1995.35,y=10,label="New pumas introduced",hjust=0,col=gpColors("hy"),size=8)+
   #add minor ticks (who'd've thought this would be so complicated?!)
   scale_x_continuous(limits=c(1985,2013),minor_breaks=seq(1985,2013,1))+
-  guides(x="axis_minor")+theme(axis.ticks.length.x=unit(0.5,"cm"),ggh4x.axis.ticks.length.minor = rel(0.3))+
-  ggtitle("Genetic Rescue of Florida Panthers")+theme(plot.title=element_text(family="montserrat",face="plain"))
+  theme(axis.ticks.length.x=unit(0.5,"cm"),ggh4x.axis.ticks.length.minor = rel(0.3))+
+  ggtitle("Genetic Rescue of Florida Panthers")
 ggsave("assets/panther-population_before-after.png",width=5,height=3.5)
 
 #Full X-axis, including after genetic rescue
-ggplot(p_pop,aes(Year,MinPopEst))+geom_vline(xintercept=1995,col=gpColors("hy"),linetype=2)+
-  geom_point()+ggGalactic(font.cex=1.5)+theme(axis.ticks.length.x = unit(5,"pt"))+ylab("Minimum Population Est.")+
+G_ppop <- ggplot(p_pop,aes(Year,MinPopEst))+geom_vline(xintercept=1995,col=gpColors("hy"),linetype=2)+
+  geom_point()+theme_galactic(font.cex=1.5)+theme(axis.ticks.length.x = unit(5,"pt"))+ylab("Minimum Population Est.")+
    scale_x_continuous(limits=c(1985,2013),minor_breaks=seq(1985,2013,1))+
   scale_y_continuous(limits=c(0,150))+
-  annotate("rect",xmin=1995.15,xmax=2009,ymin=5,ymax=15,fill="white",alpha=.7)+
-  annotate("text",x=1995.35,y=10,label="New pumas introduced",hjust=0,col=gpColors("hy"),size=8)+
-  guides(x="axis_minor")+theme(axis.ticks.length.x=unit(0.5,"cm"),ggh4x.axis.ticks.length.minor = rel(0.3))+
-  ggtitle("Genetic Rescue of Florida Panthers")+theme(plot.title=element_text(family="montserrat",face="plain"))
-ggsave("assets/panther-population_before+after.png",width=5,height=3.5)
+  # annotate("rect",xmin=1995.15,xmax=2009,ymin=5,ymax=15,fill="white",alpha=.7)+
+  annotate("text",x=1995.35,y=10,label="New individuals introduced",hjust=0,col=gpColors("hy"),size=8)+
+  theme(axis.ticks.length.x=unit(0.5,"cm"))+
+  ggtitle("Genetic Rescue of Florida Panthers")
+G_ppop
+ggsave("assets/panther-population_before+after.png",G_ppop,width=5,height=3.5)
+
+#Make version with blank axis labels
+G_ppop+blank_labs()
+ggsave("assets/panther-population_before+after_BLANK-LABS.png",width=5,height=3.5)
+
+
+
+
 
 # Panther Heterozygosity ~ Year (all data)
-p_pop%>%
+G_phet <- p_pop%>%
   ggplot(.,aes(Year,Heterozygosity))+
   geom_vline(xintercept=1995,col=gpColors("hy"),linetype=2)+
-  geom_point()+ggGalactic(font.cex=1.5)+theme(axis.ticks.length.x = unit(5,"pt"))+
+  geom_point()+theme_galactic(font.cex=1.5)+theme(axis.ticks.length.x = unit(5,"pt"))+
   ylab(expression(atop(bold("Genetic Variation"),"(Heterozygosity)")))+
   scale_x_continuous(limits=c(1986,2007),minor_breaks=1986:2007)+
   xlab("Year")+
-  # ylim(0,1)+
+  ylim(0,1)+
   annotate("rect",xmin=1995.15,xmax=2005.8,ymin=.04,ymax=.06,fill="white",alpha=.7)+
-  annotate("text",x=1995.35,y=.05,label="New pumas introduced",hjust=0,col=gpColors("hy"),size=7)+
+  annotate("text",x=1995.35,y=.05,label="New individuals introduced",hjust=0,col=gpColors("hy"),size=7)+
   guides(x="axis_minor")+theme(axis.ticks.length.x=unit(0.5,"cm"),ggh4x.axis.ticks.length.minor = rel(0.3))+
-  ggtitle("Genetic Rescue of Florida Panthers")+theme(plot.title=element_text(family="montserrat",face="plain"))
-ggsave("assets/panther-heterozygosity_before+after.png",width=5,height=3.5)
+  ggtitle("Genetic Rescue of Florida Panthers")
+G_phet
+ggsave("assets/panther-heterozygosity_before+after.png",G_phet,width=5,height=3.5)
 
-
+#make blank version
+G_phet+blank_labs()
+ggsave("assets/panther-heterozygosity_before+after_BLANK-LABS.png",width=5,height=3.5)
 
 # Guppy plots -------------------------------------------------------------
 g_pop2<-g_pop %>% mutate(month2=as.Date(Month))
 #pre intervention
-ggplot(g_pop2,aes(month2,PopSize))+geom_point()+ggGalactic(font.cex=1.5)+ylim(0,50)+theme(axis.ticks.length.x = unit(5,"pt"))+ylab("Population Size")+scale_x_date(date_labels="%b",limits=c(g_pop2$month2[1],g_pop2$month2[11]),minor_breaks="1 month")+xlab("2009")+
+Gpop<-ggplot(g_pop2,aes(month2,PopSize))+geom_point()+theme_galactic(font.cex=1.5)+ylim(0,50)+theme(axis.ticks.length.x = unit(5,"pt"))+ylab("Population Size")+scale_x_date(date_labels="%b",limits=c(g_pop2$month2[1],g_pop2$month2[11]),minor_breaks="1 month")+xlab("2009")+
   guides(x="axis_minor")+theme(axis.ticks.length.x=unit(0.5,"cm"),ggh4x.axis.ticks.length.minor = rel(0.3))
-ggsave("assets/guppy-population_before.png",width=5,height=3.5)
+Gpop
+ggsave("assets/guppy-population_before.png",Gpopwidth=5,height=3.5)
 g_pop2 %>% showAll()
 
 ## after intervention
 # Full X-axis, Missing post rescue data
-g_pop2 %>% subset(.,Stream=="Taylor"&month2<as_date("2009-03-31")) %>%
+g_rescue<-data.frame(x=c(as_date("2009-4-5"),as_date("2009-4-5")),y=c(950,1050),use=c("rect","text"))
+g_rescue_rect<-data.frame(xmin=c(as_date("2009-4-5"),as_date("2009-4-5")),y=c(950,1050))
+g_pop2$Year<-factor(sprintf("%.4s",g_pop2$Month))
+
+#Define date formatter function
+dte_formatter <- function(x) {
+  #formatter for axis labels: J12, F12, M12, etc...
+  mth <- paste0(substr(format(x, "%b"),1,3),"-")
+  yr <- format(x, "%y")
+  paste0(mth, yr)
+}
+
+g_rescue1<-g_pop2 %>% subset(.,Stream=="Caigual"&month2<=as_date("2009-4-1")) %>%
 ggplot(.,aes(month2,PopSize))+
   geom_vline(xintercept=as_date("2009-3-15"),col=gpColors("hy"),linetype=2)+
   geom_point()+
-  ggGalactic(font.cex=1.5)+
-  theme(axis.ticks.length.x = unit(5,"pt"))+
+  theme_galactic(font.cex=1.5,grid.wt.min = 0.2,grid.wt.maj = 1)+
+  scale_x_date(date_breaks="3 months",labels=dte_formatter,date_minor_breaks="1 month",limits=as_date(c("2009-1-1","2011-6-1"))) +
+    theme(axis.text.x = element_text(angle=90, vjust=.5),
+          axis.ticks.length.x = unit(5,"pt"))+
   ylab("Population Size")+
-  scale_x_date(date_labels="%Y",limits=as_date(c("2009-01-01","2011-06-01")),minor_breaks = "1 month")+
-  xlab("Year")+ylim(0,1150)+
-  annotate("rect",xmin=as_date("2009-4-5")-1,xmax=as_date("2010-6-1")-1,ymin=950,ymax=1150,fill="white",alpha=.7)+
-  annotate("text",x=as_date("2009-4-5"),y=1050,label="New guppies introduced",hjust=0,col=gpColors("hy"),size=8)+
+  xlab("Month")+ylim(0,1150)+
+  # geom_rect(data=g_rescue_rect,aes(x,y),fill="blue",alpha=.7)+
+  # geom_label(data=g_rescue,aes(x,y),label="New individuals introduced",hjust=0,col=gpColors("hy"),size=8)+
   guides(x="axis_minor")+theme(axis.ticks.length.x=unit(0.5,"cm"),ggh4x.axis.ticks.length.minor = rel(0.3))+
-  ggtitle("Genetic Rescue of Trinidadian Guppies")+theme(plot.title=element_text(family="montserrat",face="plain"))
+  ggtitle("Genetic Rescue of Trinidadian Guppies")
+
+g_rescue1
 ggsave("assets/guppy-population_before-after.png",width=5,height=3.5)
 
+
+
+
 # Guppy PopSize ~ Year (all data)
-g_pop2_T<- g_pop2 %>% subset(.,Stream=="Taylor")
-g_pop2_T %>%
+g_pop2_T<- g_pop2 %>% subset(.,Stream=="Caigual")
+g_rescue2<-g_pop2_T %>%
   ggplot(.,aes(month2,PopSize))+
   geom_vline(xintercept=as_date("2009-3-15"),col=gpColors("hy"),linetype=2)+
-  geom_point()+ggGalactic(font.cex=1.5)+theme(axis.ticks.length.x = unit(5,"pt"))+
+  geom_point()+theme_galactic(font.cex=1.5)+theme(axis.ticks.length.x = unit(5,"pt"))+
+  theme_galactic(font.cex=1.5,grid.wt.min = 0.2,grid.wt.maj = 1)+
+  scale_x_date(date_breaks="3 months",labels=dte_formatter,date_minor_breaks="1 month") +
+    theme(axis.text.x = element_text(angle=90, vjust=.5),
+          axis.ticks.length.x = unit(5,"pt"))+
   ylab("Population Size")+
-  scale_x_date(date_labels="%Y",minor_breaks = "1 month")+xlab("Year")+ylim(0,1150)+
-  annotate("rect",xmin=as_date("2009-4-5")-1,xmax=as_date("2010-6-1")-1,ymin=950,ymax=1150,fill="white",alpha=.7)+
-  annotate("text",x=as_date("2009-4-5"),y=1050,label="New guppies introduced",hjust=0,col=gpColors("hy"),size=8)+
+  ylim(0,1150)+
+  xlab("Month")+
+  # annotate("rect",xmin=as_date("2009-4-5")-1,xmax=as_date("2010-3-1")-1,ymin=950,ymax=1150,fill="white",alpha=.7)+
+  annotate("text",x=as_date("2009-4-5"),y=1050,label="New individuals introduced",hjust=0,col=gpColors("hy"),size=8)+
   guides(x="axis_minor")+theme(axis.ticks.length.x=unit(0.5,"cm"),ggh4x.axis.ticks.length.minor = rel(0.3))+
-  ggtitle("Genetic Rescue of Trinidadian Guppies")+theme(plot.title=element_text(family="montserrat",face="plain"))
+  ggtitle("Genetic Rescue of Trinidadian Guppies")#+labs(caption="Population: Caigual")
+g_rescue2
 ggsave("assets/guppy-population_before+after.png",width=5,height=3.5)
+#Make a blank version
+g_rescue2+blank_labs()
+ggsave("assets/guppy-population_before+after_BLANK-LABS.png",width=5,height=3.5)
+
 
 # Guppy Heterozygosity ~ Year (all data)
-g_pop2_T %>%
-  # subset(.,complete.cases(Heterozygosity)) %>%
+g_rescue_het <- g_pop2_T %>%
+   subset(.,complete.cases(Heterozygosity)) %>%
   ggplot(.,aes(month2,Heterozygosity))+
   geom_vline(xintercept=as_date("2009-3-15"),col=gpColors("hy"),linetype=2)+
-  geom_point()+ggGalactic(font.cex=1.5)+theme(axis.ticks.length.x = unit(5,"pt"))+
+  geom_point()+theme(axis.ticks.length.x = unit(5,"pt"))+
   ylab(expression(atop(bold("Genetic Variation"),"(Heterozygosity)")))+
-  scale_x_date(date_labels="%Y",minor_breaks = "1 month",date_breaks="1 year",limits=c(as_date("2009-01-01"),as_date("2010-06-1")))+xlab("Year")+ylim(0,1)+
-  annotate("rect",xmin=as_date("2009-4-5")-1,xmax=as.Date("2009-12-11")-1,ymin=.01,ymax=.12,fill="white",alpha=.7)+
-  annotate("text",x=as_date("2009-3-25"),y=.05,label="New guppies introduced",hjust=0,col=gpColors("hy"),size=7)+
+  #galactic styling
+  theme_galactic(font.cex=1.4,grid.wt.min = 0.2,grid.wt.maj = 1)+
+  scale_x_date(date_breaks="2 months",labels=dte_formatter,date_minor_breaks="1 month") +
+    theme(axis.text.x = element_text(angle=90, vjust=.5),
+          axis.ticks.length.x = unit(5,"pt"))+
+  xlab("Month")+ylim(0,1)+
+  # annotate("rect",xmin=as_date("2009-4-5")-1,xmax=as.Date("2009-12-11")-1,ymin=.01,ymax=.12,fill="white",alpha=.7)+
+  annotate("text",x=as_date("2009-3-25"),y=.05,label="New individuals introduced",hjust=0,col=gpColors("hy"),size=7)+
   guides(x="axis_minor")+theme(axis.ticks.length.x=unit(0.5,"cm"),ggh4x.axis.ticks.length.minor = rel(0.3))+
-  ggtitle("Genetic Rescue of Trinidadian Guppies")+theme(plot.title=element_text(family="montserrat",face="plain"))
+  ggtitle("Genetic Rescue of Trinidadian Guppies")
+g_rescue_het
  ggsave("assets/guppy-heterozygosity_before+after.png",width=5,height=3.5)
 
-
-# Guppy PopSize ~ Heterozygosity (all data)
-# This is not necessarily a graph we'll show them...but shows that heterozygosity doesn't keep increasing population size; asymptote
-# heterozygosity at intervention date is 0.46
-incpt<-0.46
-g_pop2_T %>%
-  ggplot(.,aes(Heterozygosity,PopSize))+
-  geom_vline(xintercept=incpt,col=gpColors("hy"),linetype=2)+
-  geom_point()+ggGalactic(font.cex=1.5)+theme(axis.ticks.length.x = unit(5,"pt"))+
-  ylab("Population Size")+
-  xlab("Genetic Variation (Heterozygosity)")+ylim(0,1150)+
-  annotate("rect",xmin=incpt-.02,xmax=max(g_pop2_T$Heterozygosity,na.rm=T)-.01,ymin=950,ymax=1150,fill="white",alpha=.7)+
-  annotate("text",x=incpt,y=1050,label="New guppies introduced",hjust=0,col=gpColors("hy"),size=8)+
-  guides(x="axis_minor")+theme(axis.ticks.length.x=unit(0.5,"cm"),ggh4x.axis.ticks.length.minor = rel(0.3))+
-  ggtitle("Genetic Rescue of Trinidadian Guppies")+theme(plot.title=element_text(family="montserrat",face="plain"))
-# ggsave("assets/guppy-population_before+after.png",width=5,height=3.5)
+#Make a blank version
+g_rescue_het+blank_labs()
+ ggsave("assets/guppy-heterozygosity_before+after_BLANK-LABS.png",width=5,height=3.5)
+ #
+# # Guppy PopSize ~ Heterozygosity (all data)
+# # This is not necessarily a graph we'll show them...but shows that heterozygosity doesn't keep increasing population size; asymptote
+# # heterozygosity at intervention date is 0.46
+# incpt<-0.46
+# g_pop2_T %>%
+#   ggplot(.,aes(Heterozygosity,PopSize))+
+#   geom_vline(xintercept=incpt,col=gpColors("hy"),linetype=2)+
+#   geom_point()+theme_galactic(font.cex=1.5)+theme(axis.ticks.length.x = unit(5,"pt"))+
+#   ylab("Population Size")+
+#   xlab("Genetic Variation (Heterozygosity)")+ylim(0,1150)+
+#   annotate("rect",xmin=incpt-.02,xmax=max(g_pop2_T$Heterozygosity,na.rm=T)-.01,ymin=950,ymax=1150,fill="white",alpha=.7)+
+#   annotate("text",x=incpt,y=1050,label="New guppies introduced",hjust=0,col=gpColors("hy"),size=8)+
+#   guides(x="axis_minor")+theme(axis.ticks.length.x=unit(0.5,"cm"),ggh4x.axis.ticks.length.minor = rel(0.3))+
+#   ggtitle("Genetic Rescue of Trinidadian Guppies")
+# # ggsave("assets/guppy-population_before+after.png",width=5,height=3.5)
 
 
 
@@ -204,10 +254,20 @@ pop_crash_1985<-simulateDecline(1111,24,1900,1985,t_intvl=5,exponent=5,asymp=20,
 
 pop_crash_2013<-p_pop %>% select(Year,MinPopEst) %>% rename(t=Year,N=MinPopEst) %>% mutate(dataType="real data")
 
-pop_crash<-bind_rows(pop_crash_1900,pop_crash_1985)
-pop_crash$dataType<-"simulated"
-pop_crash <- bind_rows(pop_crash,pop_crash_2013)
+pop_crash0<-bind_rows(pop_crash_1900,pop_crash_1985)
+pop_crash0$dataType<-"simulated"
+pop_crash <- bind_rows(pop_crash0,pop_crash_2013)
+polygon_bottom<-tibble(t=pop_crash$t,N=rep(0,nrow(pop_crash)),dataType="simulated")
+pop_crash_polygon<-bind_rows(polygon_bottom,pop_crash) %>% arrange(N,t)
 
-ggplot(pop_crash,aes(t,N,col=dataType,group=t)) +geom_point()+ggGalactic()+xlab("Year")+ylab("Panther Population")+scale_color_manual(values=c("#cb1f8e","#363636"))+theme(legend.position=c(.8,.875),legend.title=element_blank())+guides(color=guide_legend(override.aes=list(size=3)))+
+
+crash_animation<-
+  ggplot(pop_crash,aes(t,N,group=t)) +
+  geom_polygon(inherit.aes=F,data=pop_crash_polygon,aes(t,N),fill="#5e5e5e")+
+  geom_line(size=1.5,alpha=.85,aes(group=dataType,col=dataType))+
+  theme_galactic(font.cex=1.5,grid.wt.min = 0,grid.wt.maj = .2)+theme(axis.text.y=element_text(margin=margin(l=25)),axis.text.x=element_text(margin=margin(b=25)))+
+  xlab("Year")+ylab("Panther Population")+scale_color_manual(values=c("#cb1f8e","#363636"))+theme(legend.position=c(.8,.875),legend.title=element_blank())+guides(color=guide_legend(override.aes=list(size=3)))+
 transition_reveal(t)
+
+animate(crash_animation,rewind=F,renderer=av_renderer(file="assets/panther_pop_crash.mp4"),width=1290,height=800,units="px",nframes=160,fps=20)
 
