@@ -40,17 +40,38 @@ pTitle <- "Minimum FL Panther Population Estimate"
 pYlab <- "Panthers"
 
 #Define custom theme for all these plots
-rescue_theme<-theme_galactic(font.cex=1.4,grid.wt.min = 0.2,grid.wt.maj = 1)
+rescue_theme<-theme_galactic(text.cex=1.4,grid.wt.min = 0.2,grid.wt.maj = 1)
 
 # 1985-1994
-ggplot(p_pop,aes(Year,MinPopEst))+geom_point()+
-  rescue_theme+
-  ylim(0,150)+theme(axis.ticks.length.x = unit(5,"pt"))+ylab(pYlab)+ggtitle(pTitle)+
+ggplot(p_pop, aes(Year, MinPopEst)) +
+  geom_point(size = 2) +
+  theme_galactic(
+    text.cex = c(1, 1.7, 2, 1.7),
+    grid.wt.min = 0.2,
+    grid.wt.maj = 1,
+    pad.outer = c(5, 5, 5, 5),
+    pad.title = 0
+  ) +
+  ylim(0, 50) + theme(
+    axis.ticks.length.x = unit(5, "pt"),
+    plot.background = element_rect(fill = "transparent",colour="transparent"),
+    axis.text.x = element_text(
+      angle = 45,
+      vjust = 1,
+      hjust = 1
+    )
+  ) + ylab(pYlab) + ggtitle(pTitle) +
   #add minor ticks (who'd've thought this would be so complicated?!)
-  scale_x_continuous(limits=c(1985,1994),minor_breaks = 1985:1994,breaks=seq(1985,1994,2))+
+  scale_x_continuous(
+    limits = c(1985, 1994),
+    minor_breaks = 1985:1994,
+    breaks = seq(1985, 1994, 1)
+  ) +
   #theme(axis.ticks.length.x=unit(0.5,"cm"),plot.title=element_text(face="plain",size=30))+
-  ggtitle("Genetic Rescue of Florida Panthers")
-ggsave("assets/panther-population_before.png",width=5,height=3.5)
+  ggtitle("")
+ggsave("assets/panther-population_before.png",width=5,height=3.5,bg="transparent")
+
+
 
 
 #1985-2013
@@ -81,6 +102,9 @@ G_ppop <- ggplot(p_pop,aes(Year,MinPopEst))+geom_vline(xintercept=1995,col=gpCol
   ggtitle("Genetic Rescue of Florida Panthers")
 G_ppop
 ggsave("assets/panther-population_before+after.png",G_ppop,width=5,height=3.5)
+
+G_ppop+theme(plot.background=element_rect(fill="transparent",colour=NA))+ggtitle("")
+ggsave("assets/panther-population_before+after_transpBG.png",width=5,height=3.5,bg="transparent")
 
 #Make version with blank axis labels
 G_ppop+blank_labs()
@@ -213,7 +237,7 @@ g_rescue_het+blank_labs()
 # g_pop2_T %>%
 #   ggplot(.,aes(Heterozygosity,PopSize))+
 #   geom_vline(xintercept=incpt,col=gpColors("hy"),linetype=2)+
-#   geom_point()+theme_galactic(font.cex=1.5)+theme(axis.ticks.length.x = unit(5,"pt"))+
+#   geom_point()+theme_galactic(text.cex=1.5)+theme(axis.ticks.length.x = unit(5,"pt"))+
 #   ylab("Population Size")+
 #   xlab("Genetic Variation (Heterozygosity)")+ylim(0,1150)+
 #   annotate("rect",xmin=incpt-.02,xmax=max(g_pop2_T$Heterozygosity,na.rm=T)-.01,ymin=950,ymax=1150,fill="white",alpha=.7)+
@@ -277,7 +301,7 @@ crash_animation<-
   ggplot(pop_crash,aes(t,N,group=t)) +
   geom_polygon(inherit.aes=F,data=pop_crash_polygon,aes(t,N),fill="#5e5e5e")+
   geom_line(size=1.5,alpha=.85,aes(group=dataType,col=dataType))+
-  theme_galactic(font.cex=1.5,grid.wt.min = 0,grid.wt.maj = .2)+theme(axis.text.y=element_text(margin=margin(l=25)),axis.text.x=element_text(margin=margin(b=25)))+
+  theme_galactic(text.cex=1.5,grid.wt.min = 0,grid.wt.maj = .2)+theme(axis.text.y=element_text(margin=margin(l=25)),axis.text.x=element_text(margin=margin(b=25)))+
   xlab("Year")+ylab("Panther Population")+scale_color_manual(values=c("#cb1f8e","#363636"))+theme(legend.position=c(.8,.875),legend.title=element_blank())+guides(color=guide_legend(override.aes=list(size=3)))+
 transition_reveal(t)
 

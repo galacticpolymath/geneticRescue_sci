@@ -1,0 +1,32 @@
+{
+  "__component": "lesson-plan.versions",
+  "SectionTitle": "Version Notes",
+  "Data": [
+    {
+      "major_release": "Beta",
+      "sub_releases": [
+        {
+          "version": "0.1.0",
+          "date": "Dec 09, 2021",
+          "summary": "Initial lesson build. ",
+          "notes": null,
+          "acknowledgments": null
+        },
+        {
+          "version": "0.1.1",
+          "date": "Dec 12, 2021",
+          "summary": "Fixed version number issue & added Video Links to Teach it in 15 Quick Prep",
+          "notes": null,
+          "acknowledgments": null
+        },
+        {
+          "version": "0.2.0",
+          "date": "Dec 13, 2021",
+          "summary": "Updated data & added lesson media browser",
+          "notes": null,
+          "acknowledgments": "Thanks to [Kenzie Bottoms](https://www.linkedin.com/in/kenzie-bottoms/) for making the media browser magic!"
+        }
+      ]
+    }
+  ]
+}

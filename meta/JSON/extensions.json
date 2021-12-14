@@ -1,0 +1,6 @@
+{
+  "__component": "lesson-plan.collapsible-text-section",
+  "SectionTitle": "Extensions",
+  "Content": "One exciting extension could be to have students investigate map data of panther car collision mortality events over time. [This incredible interactive web tool](https://geodata.myfwc.com/datasets/florida-panther-mortality/explore?filters=eyJEYXRlIjpbMTQ5Mzk2NDkyNzE4OS41NiwxNjA5NTQ1NjAwMDAwXX0%3D&location=26.491578%2C-81.497011%2C12.39) would allow students to conduct an independent investigation of the leading cause of Florida panther mortality (car crashes). Students could be asked to develop their own recommendation for mitigation (a wildlife overpass, increased signage, or decreased speed limit) on specific roadways that show high numbers of collisions.",
+  "InitiallyExpanded": true
+}
