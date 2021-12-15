@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
   build:
@@ -17,11 +14,10 @@ jobs:
         uses: andstor/copycat-action@v3
         with:
           personal_token: ${{ secrets.PERSONAL_TOKEN }}
-          src_path: /published
+          src_path: /published/.
           dst_path: /lessons/geneticRescue
           src_branch: main
           dst_branch: main
           dst_owner: galacticpolymath
           dst_repo_name: gp-catalog
-          clean: true
           commit_message: Automated publishing commit
