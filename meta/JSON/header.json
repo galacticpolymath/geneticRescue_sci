@@ -1,10 +1,12 @@
 {
-  "TemplateVer": "0.1.6",
+  "TemplateVer": "0.1.9",
+  "galacticPubsVer": "",
   "ShortTitle": "geneticRescue",
   "PublicationStatus": "Live",
-  "FirstPublicationDate": "2021-12-15 17:06:16",
   "ReleaseDate": "2021-12-15",
-  "LastUpdated": "2021-12-16 10:39:39",
+  "FirstPublicationDate": "2021-12-15 17:06:16",
+  "LastUpdated": "2021-12-16 10:48:48",
+  "PublicationDate": "2021-12-15",
   "Title": "Genetic Rescue to the Rescue",
   "Subtitle": "Preventing extinction through gene flow",
   "SponsoredBy": "- [Sarah Fitzpatrick, PhD](http://swfitz.com/index.php), Department of Integrative Biology at Michigan State University's W. K. Kellogg Biological Station\n- [National Science Foundation](https://www.nsf.gov/) Grant DEB 2016569",
@@ -12,6 +14,6 @@
     "url": ["Fitzpatrick_lab_logo-transparent.png", "NSF_4-Color_bitmap_Logo.png"]
   },
   "CoverImage": {
-    "url": ""
+    "url": "banner.png"
   }
 }

@@ -1,27 +1,27 @@
-TemplateVer: 0.1.6
+TemplateVer: 0.1.9
+galacticPubsVer: 0.5.6
 ShortTitle: geneticRescue
 PublicationStatus: Live
 ReleaseDate: '2021-12-15'
 FirstPublicationDate: 2021-12-15 17:06:16
-LastUpdated: 2021-12-16 10:48:48
+LastUpdated: 2021-12-16 12:19:47
 PublicationDate: '2021-12-15'
 Title: Genetic Rescue to the Rescue
 Subtitle: Preventing extinction through gene flow
 SponsoredBy: |-
   - [Sarah Fitzpatrick, PhD](http://swfitz.com/index.php), Department of Integrative Biology at Michigan State University's W. K. Kellogg Biological Station
   - [National Science Foundation](https://www.nsf.gov/) Grant DEB 2016569
-TargetSubject: Science
-LessonEnvir: Classroom
-ForGrades: 9-12
 SponsorLogo:
 - assets/orig-client-media_NoEdit/Fitzpatrick_lab_logo-transparent.png
 - assets/orig-client-media_NoEdit/NSF_4-Color_bitmap_Logo.png
-EstLessonTime: 5 x 45 min
 LessonBanner: assets/banners_etc/banner.png
+TargetSubject: Science
+LessonEnvir: Classroom
+ForGrades: 9-12
+EstLessonTime: 5 x 45 min
 LearningEpaulette: assets/learning-plots/GP-Learning-Epaulette.png
 LearningChart: assets/learning-plots/GP-Learning-Chart.png
 SupportingMedia: assets/supporting-media/fitzpatrick_paper_screenshot.png
-MiscMD: ''
 DrivingQ: Can genetic rescue succeed in bringing a population back from the verge
   of extinction?
 EssentialQ: How do we use scientific methods to measure and develop solutions for
@@ -35,6 +35,7 @@ LearningObj: |-
   6. Propose a model organism to use for research on species that are endangered or infeasible to study.
   7. Interpret scatter plot data from a model organism (Trinidadian guppies) and compare to related data in an endangered species (Florida panthers) to draw broader conclusions about the effectiveness of genetic rescue.
   8. Assess the potential risks and benefits of genetic rescue for a particular species, and propose a course of action.
+MiscMD: ''
 Tags:
 - genetic rescue
 - genetics
