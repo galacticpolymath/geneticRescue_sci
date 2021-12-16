@@ -16,6 +16,7 @@ jobs:
           personal_token: ${{ secrets.ACTION_HERO }}
           src_path: /published
           dst_path: /lessons/${{ github.event.repository.name }}
+          clean: true
           src_branch: main
           dst_branch: main
           dst_owner: galacticpolymath
