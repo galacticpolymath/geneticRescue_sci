@@ -14,7 +14,7 @@ jobs:
         uses: andstor/copycat-action@v3
         with:
           personal_token: ${{ secrets.ACTION_HERO }}
-          src_path: /published/
+          src_path: published/.
           dst_path: /lessons/${{ github.event.repository.name }}
           clean: true
           src_branch: main

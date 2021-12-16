@@ -3,7 +3,7 @@ ShortTitle: geneticRescue
 PublicationStatus: Live
 ReleaseDate: '2021-12-15'
 FirstPublicationDate: 2021-12-15 17:06:16
-LastUpdated: 2021-12-16 10:40:01
+LastUpdated: 2021-12-16 10:48:48
 PublicationDate: '2021-12-15'
 Title: Genetic Rescue to the Rescue
 Subtitle: Preventing extinction through gene flow
@@ -17,10 +17,10 @@ SponsorLogo:
 - assets/orig-client-media_NoEdit/Fitzpatrick_lab_logo-transparent.png
 - assets/orig-client-media_NoEdit/NSF_4-Color_bitmap_Logo.png
 EstLessonTime: 5 x 45 min
-LessonBanner: ''
+LessonBanner: assets/banners_etc/banner.png
 LearningEpaulette: assets/learning-plots/GP-Learning-Epaulette.png
 LearningChart: assets/learning-plots/GP-Learning-Chart.png
-SupportingMedia: ''
+SupportingMedia: assets/supporting-media/fitzpatrick_paper_screenshot.png
 MiscMD: ''
 DrivingQ: Can genetic rescue succeed in bringing a population back from the verge
   of extinction?
