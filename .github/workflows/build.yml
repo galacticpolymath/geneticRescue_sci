@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
   build:
@@ -23,5 +20,4 @@ jobs:
           dst_branch: main
           dst_owner: galacticpolymath
           dst_repo_name: gp-catalog
-          clean: true
           commit_message: Automated publishing commit
