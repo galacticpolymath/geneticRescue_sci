@@ -1,16 +1,18 @@
 {
   "id": "3",
-  "TemplateVer": "0.2.1",
-  "galacticPubsVer": "0.5.7",
+  "TemplateVer": "0.2.6",
+  "galacticPubsVer": "0.6.4",
+  "FirstPublicationDate": "2021-12-15 17:06:16",
+  "LastUpdated": "2022-02-15 17:49:36",
+  "GPCatalogPath": "https://catalog.galacticpolymath.com/lessons/geneticRescue_sci/LESSON.json",
   "ShortTitle": "geneticRescue",
   "PublicationStatus": "Live",
-  "GPCatalogPath": "https://catalog.galacticpolymath.com/lessons/geneticRescue_sci/LESSON.json",
+  "RebuildAllMaterials": true,
   "ReleaseDate": "2021-12-15",
-  "FirstPublicationDate": "2021-12-15 17:06:16",
-  "LastUpdated": "2021-12-16 18:02:20",
   "PublicationDate": "2021-12-15",
   "Title": "Genetic Rescue to the Rescue",
   "Subtitle": "Preventing extinction through gene flow",
+  "SponsorName": "",
   "SponsoredBy": "- [Sarah Fitzpatrick, PhD](http://swfitz.com/index.php), Department of Integrative Biology at Michigan State University's W. K. Kellogg Biological Station\n- [National Science Foundation](https://www.nsf.gov/) Grant DEB 2016569",
   "SponsorImage": {
     "url": [
@@ -29,20 +31,41 @@
       "TargetSubject": "Science",
       "Text": "#### Driving Question(s):\nCan genetic rescue succeed in bringing a population back from the verge of extinction? Can genetic rescue succeed in bringing a population back from the verge of extinction?\n#### Essential Question(s):\nHow do we use scientific methods to measure and develop solutions for our negative impacts on the world? How do we use scientific methods to measure and develop solutions for our negative impacts on the world?\n#### Learning Objective(s):\n1. Provide examples of variation in genes, traits, and individual survival, and why each is important for a species to persist and evolve.\n2. Summarize how human activities fragment animal populations and how habitat fragmentation limits gene flow, reducing genetic variation.\n3. Predict how increasing genetic variation by introducing new individuals (i.e. by conducting genetic rescue) will impact population size.\n4. Create a logic model showing how genetic rescue occurs; i.e. how the introduction of new individuals to a small, inbred population on the verge of extinction provides needed genetic variation for the population to survive and recover.\n5. Demonstrate understanding of how reduction in both population size and genetic variation in endangered species lead to the \"extinction vortex\"—the increasing likelihood of small populations to blink out due to low population size and recessive genetics from inbreeding.\n6. Propose a model organism to use for research on species that are endangered or infeasible to study.\n7. Interpret scatter plot data from a model organism (Trinidadian guppies) and compare to related data in an endangered species (Florida panthers) to draw broader conclusions about the effectiveness of genetic rescue.\n8. Assess the potential risks and benefits of genetic rescue for a particular species, and propose a course of action. 1. Provide examples of variation in genes, traits, and individual survival, and why each is important for a species to persist and evolve.\n2. Summarize how human activities fragment animal populations and how habitat fragmentation limits gene flow, reducing genetic variation.\n3. Predict how increasing genetic variation by introducing new individuals (i.e. by conducting genetic rescue) will impact population size.\n4. Create a logic model showing how genetic rescue occurs; i.e. how the introduction of new individuals to a small, inbred population on the verge of extinction provides needed genetic variation for the population to survive and recover.\n5. Demonstrate understanding of how reduction in both population size and genetic variation in endangered species lead to the \"extinction vortex\"—the increasing likelihood of small populations to blink out due to low population size and recessive genetics from inbreeding.\n6. Propose a model organism to use for research on species that are endangered or infeasible to study.\n7. Interpret scatter plot data from a model organism (Trinidadian guppies) and compare to related data in an endangered species (Florida panthers) to draw broader conclusions about the effectiveness of genetic rescue.\n8. Assess the potential risks and benefits of genetic rescue for a particular species, and propose a course of action.",
       "Tags": [
-        "genetic rescue",
-        "genetics",
-        "conservation",
-        "fish",
-        "cat",
-        "natural selection",
-        "variation",
-        "evolution",
-        "extinction"
+        {
+          "Value": "genetic rescue"
+        },
+        {
+          "Value": "genetics"
+        },
+        {
+          "Value": "conservation"
+        },
+        {
+          "Value": "fish"
+        },
+        {
+          "Value": "cat"
+        },
+        {
+          "Value": "natural selection"
+        },
+        {
+          "Value": "variation"
+        },
+        {
+          "Value": "evolution"
+        },
+        {
+          "Value": "extinction"
+        }
       ],
       "SteamEpaulette": {
-        "url": "https://catalog.galacticpolymath.com/lessons/geneticRescue_sci/GP-Learning-Epaulette.png",
-        "Description": "Students learn about genetic rescue, an approach for helping endangered populations recover by introducing closely related individuals from a different population. The lesson is framed around the story of Florida panthers, which are a classic success story for genetic rescue. First, students explore Florida panther recovery through the lens of different stakeholders (ranchers, city-dwellers, and Native Americans), discussing ways that each group may have positive or negative associations with panthers. In Day 2, they then explore different options for helping panthers recovery, discussing pros and cons of genetic rescue, captive breeding, or doing nothing. Day 3 provides necessary scaffolding for a deeper dive into genetic rescue by explaining key concepts in the context of Florida panthers. Students also simulate matings to better understand why inbreeding and recessive traits are so problematic in small populations.\n\nIn Day 4, go deeper into genetic rescue: what can go wrong, and students provide evidence of their understanding of how all the concepts connect through a concept mapping exercise, interspersed with our carefully crafted explainer videos. A key take-home is that even though genetic rescue worked in Florida panthers, it's quite risky to test out conservation strategies on an endangered species. The concluding task is to analyze a table of organisms and their characteristics to determine which would be good models to study the effectiveness of genetic rescue without risking a rare species' extinction. Day 5 builds on this to reveal Dr. Sarah Fitzpatrick's (this lesson's sponsor) research using Trinidadian guppies as a model of genetic rescue. Students then spend much of the class period analyzing real, paired data collected from Florida panthers and guppies. They are asked to compare and label graphs from both species, and synthesize broader conclusions. The lesson leaves open many options for project-based lessons and independent projects."
-      }
+        "url": "https://catalog.galacticpolymath.com/lessons/geneticRescue_sci/GP-Learning-Epaulette.png"
+      },
+      "SteamEpaulette_vert": {
+        "url": "https://catalog.galacticpolymath.com/lessons/geneticRescue_sci/GP-Learning-Epaulette_vert.png"
+      },
+      "Description": "Students learn about genetic rescue, an approach for helping endangered populations recover by introducing closely related individuals from a different population. The lesson is framed around the story of Florida panthers, which are a classic success story for genetic rescue. First, students explore Florida panther recovery through the lens of different stakeholders (ranchers, city-dwellers, and Native Americans), discussing ways that each group may have positive or negative associations with panthers. In Day 2, they then explore different options for helping panthers recovery, discussing pros and cons of genetic rescue, captive breeding, or doing nothing. Day 3 provides necessary scaffolding for a deeper dive into genetic rescue by explaining key concepts in the context of Florida panthers. Students also simulate matings to better understand why inbreeding and recessive traits are so problematic in small populations.\n\nIn Day 4, go deeper into genetic rescue: what can go wrong, and students provide evidence of their understanding of how all the concepts connect through a concept mapping exercise, interspersed with our carefully crafted explainer videos. A key take-home is that even though genetic rescue worked in Florida panthers, it's quite risky to test out conservation strategies on an endangered species. The concluding task is to analyze a table of organisms and their characteristics to determine which would be good models to study the effectiveness of genetic rescue without risking a rare species' extinction. Day 5 builds on this to reveal Dr. Sarah Fitzpatrick's (this lesson's sponsor) research using Trinidadian guppies as a model of genetic rescue. Students then spend much of the class period analyzing real, paired data collected from Florida panthers and guppies. They are asked to compare and label graphs from both species, and synthesize broader conclusions. The lesson leaves open many options for project-based lessons and independent projects."
     },
     "preview": {
       "__component": "lesson-plan.lesson-preview",
@@ -91,7 +114,7 @@
           "otherLink": null
         }
       ],
-      "QuickPrep": "1. Watch Video(s) for Part 1\n2. Look over [Background](#background)\n3. Look over [Procedure](#procedure)\n4. [Teach it!](#teaching_materials)\n5. Repeat for each part and [tell us what you think.](#feedback)",
+      "QuickPrep": "1. Watch Video(s) for Part 1\n2. Look over <AnchorLink href=\"#background\"> Background <\/AnchorLink>\n3. Look over <AnchorLink href=\"#procedure\"> Procedure <\/AnchorLink>\n4. <AnchorLink href=\"#teaching_materials\"> Teach it! <\/AnchorLink>\n5. Repeat for each part and <AnchorLink href=\"#feedback\"> tell us what you think. <\/AnchorLink>",
       "InitiallyExpanded": true
     },
     "teaching-materials": {
@@ -159,7 +182,7 @@
               ]
             }
           ],
-          "gradeVariantNotes": {},
+          "gradeVariantNotes": null,
           "resources": [
             {
               "grades": "Grades 9-12",
@@ -899,21 +922,19 @@
       "Content": "![screenshot of Scientific Study](https://catalog.galacticpolymath.com/lessons/geneticRescue_sci/fitzpatrick_paper_screenshot.png)\n[Link to the Scientific Study](https://onlinelibrary.wiley.com/doi/10.1111/eva.12356)\n\n#### Further Reading\n- [USFWS Florida Panther Profile](https://www.fws.gov/refuge/florida_panther/wah/panther.html)\n- [Nat Geo: Planned roads could imperil Florida's panthers—and last remaining wilderness](https://www.nationalgeographic.com/animals/article/florida-toll-road-threatens-wildlife-panthers?loggedin=true)\n- [The Florida Panther: Past, Present and Future](https://edis.ifas.ufl.edu/publication/UW402)\n- [America’s cat is on the comeback](https://www.americanscientist.org/article/americas-cat-is-on-the-comeback)\n- [Of kings and Alpine ibex: the amazing resurrection of a species from near-extinction](https://natureecoevocommunity.nature.com/posts/59792-of-kings-and-alpine-ibex-the-amazing-resurrection-of-a-species-from-near-extinction)\n",
       "InitiallyExpanded": true
     },
-    "learning-chart": [
-      {
-        "__component": "lesson-plan.section-heading",
-        "SectionTitle": "Standards"
-      },
-      {
-        "__component": "lesson.steam-badge",
-        "Title": "About the GP Learning Chart",
-        "Description": "This Galactic Polymath Learning Chart illustrates the areas of knowledge covered. This lesson targets Science, but it helps teach national learning standards in 4 subjects: \n- [Common Core Math](http://www.corestandards.org/Math/); [Common Core ELA](http://www.corestandards.org/ELA-Literacy/); [Next Generation Science (NGSS)](https://www.nextgenscience.org/); and [College, Career, and Civic Life (C3) Social Studies Standards](https://www.socialstudies.org/standards/c3).\nIn total, there are 21 standards across US grade band(s): 9-12.",
-        "Footnote": "**Notes on Standards**\n\n*Standards are broken down into ***Target*** and ***Connected*** categories. Target standards are directly reinforced or taught; connected standards are not fully addressed in the lesson, but connected enough to provide a foundation for teachers to build upon.",
-        "Badge": {
-          "url": "https://catalog.galacticpolymath.com/lessons/geneticRescue_sci/GP-Learning-Chart.png"
-        }
+    "standards-header": {
+      "__component": "lesson-plan.section-heading",
+      "SectionTitle": "Learning Standards"
+    },
+    "learning-chart": {
+      "__component": "lesson.learning-chart",
+      "Title": "About the GP Learning Chart",
+      "Description": "This Galactic Polymath Learning Chart illustrates the areas of knowledge covered. This lesson targets Science, but it helps teach national learning standards in 4 subjects: \n- [Common Core Math](http://www.corestandards.org/Math/); [Common Core ELA](http://www.corestandards.org/ELA-Literacy/); [Next Generation Science (NGSS)](https://www.nextgenscience.org/); and [College, Career, and Civic Life (C3) Social Studies Standards](https://www.socialstudies.org/standards/c3).\nIn total, there are 21 standards across US grade band(s): 9-12.",
+      "Footnote": "**Notes on Standards**\n\n*Standards are broken down into ***Target*** and ***Connected*** categories. Target standards are directly reinforced or taught; connected standards are not fully addressed in the lesson, but connected enough to provide a foundation for teachers to build upon.",
+      "Badge": {
+        "url": "https://catalog.galacticpolymath.com/lessons/geneticRescue_sci/GP-Learning-Chart.png"
       }
-    ],
+    },
     "standards": {
       "__component": "lesson-plan.standards",
       "Data": [
@@ -1003,43 +1024,28 @@
               "name": "NGSS",
               "dimensions": [
                 {
+                  "slug": "DCI",
+                  "name": "Disciplinary Core ideas",
+                  "standardsGroup": [
+                    {
+                      "codes": "LS4.D-H2",
+                      "grades": "9,10,11,12",
+                      "statements": "Humans depend on the living world for the resources and other benefits provided by biodiversity. But human activity is also having adverse impacts on biodiversity through overpopulation, overexploitation, habitat destruction, pollution, introduction of invasive species, and climate change. Thus, sustaining biodiversity so that ecosystem functioning and productivity are maintained is essential to supporting and enhancing life on Earth. Sustaining biodiversity also aids humanity by preserving landscapes of recreational or inspirational value.",
+                      "alignmentNotes": "- Students watch videos to learn about the benefits provided by a healthy Florida Panther population and participate in a Think-Pair-Share to discuss the potential impacts of losing Florida Panthers.",
+                      "subcat": "Biodiversity & Humans"
+                    }
+                  ]
+                },
+                {
                   "slug": "SEP",
                   "name": "Science & Engineering Practices",
                   "standardsGroup": [
-                    {
-                      "codes": "CEDS-H1",
-                      "grades": "9,10,11,12",
-                      "statements": "Make a quantitative and/or qualitative claim regarding the relationship between dependent and independent variables.",
-                      "alignmentNotes": "- Students interpret graphs depicting Trinidadian guppies' population size and genetic variation over time to determine success of genetic rescue treatment.",
-                      "subcat": "Constructing Explanations & Designing Solutions"
-                    },
-                    {
-                      "codes": "INFO-H5",
-                      "grades": "9,10,11,12",
-                      "statements": "Communicate scientific and/or technical information or ideas (e.g. about phenomena and/or the process of development and the design and performance of a proposed process or system) in multiple formats (including orally, graphically, textually, and mathematically).",
-                      "alignmentNotes": "- Students will complete a worksheet that asks them to identify a graph that depicts a population undergoing an extinction vortex and explain their choice by comparing it to another graph. ",
-                      "subcat": "Obtaining, Evaluating, & Communicating Information"
-                    },
                     {
                       "codes": "DATA-H5",
                       "grades": "9,10,11,12",
                       "statements": "Evaluate the impact of new data on a working explanation and/or model of a proposed process or system.",
                       "alignmentNotes": "- Students will interpret population data from Trinidadian guppies and use their findings to explain how it models changes in the Florida Panther population after genetic rescue has occured. ",
                       "subcat": "Analyzing Data"
-                    },
-                    {
-                      "codes": "ARG-H1",
-                      "grades": "9,10,11,12",
-                      "statements": "Compare and evaluate competing arguments or design solutions in light of currently accepted explanations, new evidence, limitations (e.g., trade-offs), constraints, and ethical issues.",
-                      "alignmentNotes": "- Students take part in a role-playing activity where they consider three options for how to address the issues with Florida Panthers and discuss the pros and cons of each.",
-                      "subcat": "Engaging in Argument from Evidence"
-                    },
-                    {
-                      "codes": "ARG-H5",
-                      "grades": "9,10,11,12",
-                      "statements": "Make and defend a claim based on evidence about the natural world or the effectiveness of a design solution that reflects scientific knowledge, and student-generated evidence.",
-                      "alignmentNotes": "- Students take part in a role-playing activity where they consider three options for how to address the issues with Florida Panthers and discuss the pros and cons of each.",
-                      "subcat": "Engaging in Argument from Evidence"
                     },
                     {
                       "codes": "ARG-H6",
@@ -1058,43 +1064,9 @@
                   ]
                 },
                 {
-                  "slug": "DCI",
-                  "name": "Disciplinary Core ideas",
-                  "standardsGroup": [
-                    {
-                      "codes": "LS4.D-H2",
-                      "grades": "9,10,11,12",
-                      "statements": "Humans depend on the living world for the resources and other benefits provided by biodiversity. But human activity is also having adverse impacts on biodiversity through overpopulation, overexploitation, habitat destruction, pollution, introduction of invasive species, and climate change. Thus, sustaining biodiversity so that ecosystem functioning and productivity are maintained is essential to supporting and enhancing life on Earth. Sustaining biodiversity also aids humanity by preserving landscapes of recreational or inspirational value.",
-                      "alignmentNotes": "- Students watch videos to learn about the benefits provided by a healthy Florida Panther population and participate in a Think-Pair-Share to discuss the potential impacts of losing Florida Panthers.",
-                      "subcat": "Biodiversity & Humans"
-                    }
-                  ]
-                },
-                {
                   "slug": "CCC",
                   "name": "Cross-Cutting Concepts",
                   "standardsGroup": [
-                    {
-                      "codes": "SYS-H1",
-                      "grades": "9,10,11,12",
-                      "statements": "Systems can be designed to do specific tasks.",
-                      "alignmentNotes": "- Students will evaluate the characteristics of a variety of commonly used model organisms and select the ones that best fit for studying the problem in Florida panthers",
-                      "subcat": "Systems & Systems Models"
-                    },
-                    {
-                      "codes": "SYS-H3",
-                      "grades": "9,10,11,12",
-                      "statements": "Models (e.g., physical, mathematical, computer models) can be used to simulate systems and interactions–including energy, matter, and information flows– within and between systems at different scales.",
-                      "alignmentNotes": "- Students will evaluate the characteristics of a variety of commonly used model organisms and select the ones that best fit for studying the problem in Florida panthers.",
-                      "subcat": "Systems & Systems Models"
-                    },
-                    {
-                      "codes": "SYS-H4",
-                      "grades": "9,10,11,12",
-                      "statements": "Models can be used to predict the behavior of a system, but these predictions have limited precision and reliability due to the assumptions and approximations inherent in models.",
-                      "alignmentNotes": "- Students will evaluate the characteristics of a variety of commonly used model organisms and select the ones that best fit for studying the problem in Florida panthers.",
-                      "subcat": "Systems & Systems Models"
-                    },
                     {
                       "codes": "SPQ-H5",
                       "grades": "9,10,11,12",
@@ -1165,6 +1137,67 @@
                       "statements": "Species become extinct because they can no longer survive and reproduce in their altered environment. If members cannot adjust to change that is too fast or drastic, the opportunity for the species’ evolution is lost.",
                       "alignmentNotes": "- Students explore the extinction vortext concept by reviewing and comparing multiple graphs that show changes in population size (and genetic variation) over time.",
                       "subcat": "Adaptation"
+                    }
+                  ]
+                },
+                {
+                  "slug": "SEP",
+                  "name": "Science & Engineering Practices",
+                  "standardsGroup": [
+                    {
+                      "codes": "CEDS-H1",
+                      "grades": "9,10,11,12",
+                      "statements": "Make a quantitative and/or qualitative claim regarding the relationship between dependent and independent variables.",
+                      "alignmentNotes": "- Students interpret graphs depicting Trinidadian guppies' population size and genetic variation over time to determine success of genetic rescue treatment.",
+                      "subcat": "Constructing Explanations & Designing Solutions"
+                    },
+                    {
+                      "codes": "INFO-H5",
+                      "grades": "9,10,11,12",
+                      "statements": "Communicate scientific and/or technical information or ideas (e.g. about phenomena and/or the process of development and the design and performance of a proposed process or system) in multiple formats (including orally, graphically, textually, and mathematically).",
+                      "alignmentNotes": "- Students will complete a worksheet that asks them to identify a graph that depicts a population undergoing an extinction vortex and explain their choice by comparing it to another graph. \n- Students also complete concept maps to communicate their understanding of extinction vortex and genetic rescue.",
+                      "subcat": "Obtaining, Evaluating, & Communicating Information"
+                    },
+                    {
+                      "codes": "ARG-H1",
+                      "grades": "9,10,11,12",
+                      "statements": "Compare and evaluate competing arguments or design solutions in light of currently accepted explanations, new evidence, limitations (e.g., trade-offs), constraints, and ethical issues.",
+                      "alignmentNotes": "- Students take part in a role-playing activity where they consider three options for how to address the issues with Florida Panthers and discuss the pros and cons of each.",
+                      "subcat": "Engaging in Argument from Evidence"
+                    },
+                    {
+                      "codes": "ARG-H5",
+                      "grades": "9,10,11,12",
+                      "statements": "Make and defend a claim based on evidence about the natural world or the effectiveness of a design solution that reflects scientific knowledge, and student-generated evidence.",
+                      "alignmentNotes": "- Students take part in a role-playing activity where they consider three options for how to address the issues with Florida Panthers and discuss the pros and cons of each.",
+                      "subcat": "Engaging in Argument from Evidence"
+                    }
+                  ]
+                },
+                {
+                  "slug": "CCC",
+                  "name": "Cross-Cutting Concepts",
+                  "standardsGroup": [
+                    {
+                      "codes": "SYS-H1",
+                      "grades": "9,10,11,12",
+                      "statements": "Systems can be designed to do specific tasks.",
+                      "alignmentNotes": "- Students will evaluate the characteristics of a variety of commonly used model organisms and select the ones that best fit for studying the problem in Florida panthers",
+                      "subcat": "Systems & Systems Models"
+                    },
+                    {
+                      "codes": "SYS-H3",
+                      "grades": "9,10,11,12",
+                      "statements": "Models (e.g., physical, mathematical, computer models) can be used to simulate systems and interactions–including energy, matter, and information flows– within and between systems at different scales.",
+                      "alignmentNotes": "- Students will evaluate the characteristics of a variety of commonly used model organisms and select the ones that best fit for studying the problem in Florida panthers.",
+                      "subcat": "Systems & Systems Models"
+                    },
+                    {
+                      "codes": "SYS-H4",
+                      "grades": "9,10,11,12",
+                      "statements": "Models can be used to predict the behavior of a system, but these predictions have limited precision and reliability due to the assumptions and approximations inherent in models.",
+                      "alignmentNotes": "- Students will evaluate the characteristics of a variety of commonly used model organisms and select the ones that best fit for studying the problem in Florida panthers.",
+                      "subcat": "Systems & Systems Models"
                     }
                   ]
                 }

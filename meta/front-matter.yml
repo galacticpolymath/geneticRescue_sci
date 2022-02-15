@@ -1,15 +1,17 @@
 id: '3'
-TemplateVer: 0.2.1
-galacticPubsVer: 0.5.7
+TemplateVer: 0.2.6
+galacticPubsVer: 0.6.4
+FirstPublicationDate: 2021-12-15 17:06:16
+LastUpdated: 2022-02-15 17:49:36
+GPCatalogPath: https://catalog.galacticpolymath.com/lessons/geneticRescue_sci/LESSON.json
 ShortTitle: geneticRescue
 PublicationStatus: Live
-GPCatalogPath: https://catalog.galacticpolymath.com/lessons/geneticRescue_sci/LESSON.json
+RebuildAllMaterials: yes
 ReleaseDate: '2021-12-15'
-FirstPublicationDate: 2021-12-15 17:06:16
-LastUpdated: 2021-12-16 18:02:20
 PublicationDate: '2021-12-15'
 Title: Genetic Rescue to the Rescue
 Subtitle: Preventing extinction through gene flow
+SponsorName: ''
 SponsoredBy: |-
   - [Sarah Fitzpatrick, PhD](http://swfitz.com/index.php), Department of Integrative Biology at Michigan State University's W. K. Kellogg Biological Station
   - [National Science Foundation](https://www.nsf.gov/) Grant DEB 2016569
@@ -22,7 +24,13 @@ LessonEnvir: Classroom
 ForGrades: 9-12
 EstLessonTime: 5 x 45 min
 LearningEpaulette: assets/learning-plots/GP-Learning-Epaulette.png
+LearningEpaulette_vert: assets/learning-plots/GP-Learning-Epaulette_vert.png
+LearningEpaulette_params_heightScalar: 1
+LearningEpaulette_params_randomSeed: 111
 LearningChart: assets/learning-plots/GP-Learning-Chart.png
+LearningChart_params_centralText: ''
+LearningChart_params_caption: ''
+LearningChart_params_captionN: yes
 SupportingMedia: assets/supporting-media/fitzpatrick_paper_screenshot.png
 DrivingQ: Can genetic rescue succeed in bringing a population back from the verge
   of extinction?
@@ -91,4 +99,10 @@ Credits: "#### Lead Author and Creative Director:\nMatt Wilkins, PhD\nIf you lik
   Education Consultants:\n- [Karlisa Callwood, PhD](https://www.perryinstitute.org/staff/dr-karlisa-callwood)\n-
   [Pedro Márquez-Zacarías](https://twitter.com/pedrom_z)\n- [Sarah Grasty, MS](https://www.linkedin.com/in/sarah-grasty-988676b0/)"
 ScriptsToRun: ''
-ReadyToCompile: Front Matter
+ReadyToCompile:
+- Front Matter
+- Standards Alignment
+- Teaching Materials
+- Procedure
+- Acknowledgments
+- Versions
