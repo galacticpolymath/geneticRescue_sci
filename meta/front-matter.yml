@@ -2,7 +2,7 @@ id: '3'
 TemplateVer: 0.2.6
 galacticPubsVer: 0.6.4
 FirstPublicationDate: 2021-12-15 17:06:16
-LastUpdated: 2022-02-15 17:49:36
+LastUpdated: 2022-02-21 17:23:47
 GPCatalogPath: https://catalog.galacticpolymath.com/lessons/geneticRescue_sci/LESSON.json
 ShortTitle: geneticRescue
 PublicationStatus: Live
@@ -25,7 +25,7 @@ ForGrades: 9-12
 EstLessonTime: 5 x 45 min
 LearningEpaulette: assets/learning-plots/GP-Learning-Epaulette.png
 LearningEpaulette_vert: assets/learning-plots/GP-Learning-Epaulette_vert.png
-LearningEpaulette_params_heightScalar: 1
+LearningEpaulette_params_heightScalar: 0.7
 LearningEpaulette_params_randomSeed: 111
 LearningChart: assets/learning-plots/GP-Learning-Chart.png
 LearningChart_params_centralText: ''
