@@ -2,7 +2,7 @@ id: '3'
 TemplateVer: 0.2.6
 galacticPubsVer: 0.6.4
 FirstPublicationDate: 2021-12-15 17:06:16
-LastUpdated: 2022-02-21 17:23:47
+LastUpdated: 2022-02-21 19:35:22
 GPCatalogPath: https://catalog.galacticpolymath.com/lessons/geneticRescue_sci/LESSON.json
 ShortTitle: geneticRescue
 PublicationStatus: Live
@@ -30,7 +30,7 @@ LearningEpaulette_params_randomSeed: 111
 LearningChart: assets/learning-plots/GP-Learning-Chart.png
 LearningChart_params_centralText: ''
 LearningChart_params_caption: ''
-LearningChart_params_captionN: yes
+LearningChart_params_captionN: no
 SupportingMedia: assets/supporting-media/fitzpatrick_paper_screenshot.png
 DrivingQ: Can genetic rescue succeed in bringing a population back from the verge
   of extinction?
