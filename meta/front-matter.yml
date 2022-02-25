@@ -1,17 +1,20 @@
 id: '3'
-TemplateVer: 0.2.6
+ShortTitle: geneticRescue
+TemplateVer: 0.2.7
 galacticPubsVer: 0.6.4
 FirstPublicationDate: 2021-12-15 17:06:16
 LastUpdated: 2022-02-21 19:35:22
 GPCatalogPath: https://catalog.galacticpolymath.com/lessons/geneticRescue_sci/LESSON.json
-ShortTitle: geneticRescue
+GitHubPath: git@github.com:galacticpolymath/geneticRescue_sci.git
 PublicationStatus: Live
-RebuildAllMaterials: yes
+RebuildAllMaterials: no
 ReleaseDate: '2021-12-15'
 PublicationDate: '2021-12-15'
 Title: Genetic Rescue to the Rescue
 Subtitle: Preventing extinction through gene flow
-SponsorName: ''
+SponsorName:
+- NSF
+- Sarah Fitzpatrick
 SponsoredBy: |-
   - [Sarah Fitzpatrick, PhD](http://swfitz.com/index.php), Department of Integrative Biology at Michigan State University's W. K. Kellogg Biological Station
   - [National Science Foundation](https://www.nsf.gov/) Grant DEB 2016569

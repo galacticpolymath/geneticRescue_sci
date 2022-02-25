@@ -25,6 +25,13 @@
           "summary": "Updated data & added lesson media browser",
           "notes": null,
           "acknowledgments": "Thanks to [Kenzie Bottoms](https://www.linkedin.com/in/kenzie-bottoms/) for making the media browser magic!"
+        },
+        {
+          "version": "0.3.0",
+          "date": "Feb 17, 2022",
+          "summary": "Major revisions to Part 2",
+          "notes": "Added new Above the Noise video engagement at the beginning & numerous tweaks to presentation and worksheet to improve flow & aid student understanding.",
+          "acknowledgments": "Needed changes became apparent after Matt Wilkins taught the lesson to a group of 7-8th graders at WEB Tutorial in Nashville, TN."
         }
       ]
     }

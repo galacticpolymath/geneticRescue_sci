@@ -1,18 +1,22 @@
 {
   "id": "3",
-  "TemplateVer": "0.2.6",
+  "ShortTitle": "geneticRescue",
+  "TemplateVer": "0.2.7",
   "galacticPubsVer": "0.6.4",
   "FirstPublicationDate": "2021-12-15 17:06:16",
   "LastUpdated": "2022-02-21 19:35:22",
   "GPCatalogPath": "https://catalog.galacticpolymath.com/lessons/geneticRescue_sci/LESSON.json",
-  "ShortTitle": "geneticRescue",
+  "GitHubPath": "git@github.com:galacticpolymath/geneticRescue_sci.git",
   "PublicationStatus": "Live",
   "RebuildAllMaterials": true,
   "ReleaseDate": "2021-12-15",
   "PublicationDate": "2021-12-15",
   "Title": "Genetic Rescue to the Rescue",
   "Subtitle": "Preventing extinction through gene flow",
-  "SponsorName": "",
+  "SponsorName": [
+    "NSF",
+    "Sarah Fitzpatrick"
+  ],
   "SponsoredBy": "- [Sarah Fitzpatrick, PhD](http://swfitz.com/index.php), Department of Integrative Biology at Michigan State University's W. K. Kellogg Biological Station\n- [National Science Foundation](https://www.nsf.gov/) Grant DEB 2016569",
   "SponsorImage": {
     "url": [
@@ -77,10 +81,10 @@
           "title": "The Return of The Florida Panther",
           "description": "Did you know Florida had panthers? The Florida panther, Puma concolor coryi, is a critically endangered species in the southern regions of Florida. Once rare and almost never seen, the Florida panther has bounced back from a brush with extinction to the point where more frequent encounters have people asking questions about this apex predator. There are misconceptions, misinformation, and misunderstandings about the panther and its habitat, so ecologist and filmmaker Chris Morgan travelled to Florida to get to the bottom of it. ",
           "lessonRelevance": "For Part 1: This video provides background on the plight of Florida panthers, and different viewpoints in favor or against them. Provides a starting point for discussions about different strategies for saving endangered species and a hook for exploring genetics.",
-          "by": "UPROAR",
-          "byLink": "https://www.youtube.com/channel/UCKMBsN-udVTDvi0T67bU0Eg",
+          "by": "Chris Morgan (Wildlife Media)",
+          "byLink": "https://www.youtube.com/channel/UC59OLxYOFLRqS_0HDhLs7iQ",
           "keywords": "endangered species, Florida panther, puma, conservation, success story",
-          "mainLink": "https://www.youtube.com/embed/S98srPEViJs",
+          "mainLink": "https://www.youtube.com/embed/Xr1SstxYW8w",
           "vimeoLink": null,
           "filename": null,
           "otherLink": null
@@ -520,7 +524,7 @@
                     "Step": 4,
                     "StepTitle": "Watch Video 1",
                     "StepQuickDescription": "How do people feel about the Florida Panther?",
-                    "StepDetails": "[▶\"The Return of The Florida Panther\"](https://www.youtube.com/watch?v=S98srPEViJs&list=PLz-D3xOC0d88kLYQLB9xeUz7gAaO1JJZb&index=1) explores the plight of the panther through the lens of different stakeholders (e.g. urbanites, ranchers, and Native Americans).",
+                    "StepDetails": "[▶\"The Return of The Florida Panther\"](https://www.youtube.com/watch?v=Xr1SstxYW8w) explores the plight of the panther through the lens of different stakeholders (e.g. urbanites, ranchers, and Native Americans).",
                     "Vocab": null,
                     "VariantNotes": null,
                     "TeachingTips": null
@@ -927,7 +931,7 @@
       "SectionTitle": "Learning Standards"
     },
     "learning-chart": {
-      "__component": "lesson.learning-chart",
+      "__component": "lesson-plan.learning-chart",
       "Title": "About the GP Learning Chart",
       "Description": "This Galactic Polymath Learning Chart illustrates the areas of knowledge covered. This lesson targets Science, but it helps teach national learning standards in 4 subjects: \n- [Common Core Math](http://www.corestandards.org/Math/); [Common Core ELA](http://www.corestandards.org/ELA-Literacy/); [Next Generation Science (NGSS)](https://www.nextgenscience.org/); and [College, Career, and Civic Life (C3) Social Studies Standards](https://www.socialstudies.org/standards/c3).\nIn total, there are 21 standards across US grade band(s): 9-12.",
       "Footnote": "**Notes on Standards**\n\n*Standards are broken down into ***Target*** and ***Connected*** categories. Target standards are directly reinforced or taught; connected standards are not fully addressed in the lesson, but connected enough to provide a foundation for teachers to build upon.",
@@ -1304,6 +1308,13 @@
               "summary": "Updated data & added lesson media browser",
               "notes": null,
               "acknowledgments": "Thanks to [Kenzie Bottoms](https://www.linkedin.com/in/kenzie-bottoms/) for making the media browser magic!"
+            },
+            {
+              "version": "0.3.0",
+              "date": "Feb 17, 2022",
+              "summary": "Major revisions to Part 2",
+              "notes": "Added new Above the Noise video engagement at the beginning & numerous tweaks to presentation and worksheet to improve flow & aid student understanding.",
+              "acknowledgments": "Needed changes became apparent after Matt Wilkins taught the lesson to a group of 7-8th graders at WEB Tutorial in Nashville, TN."
             }
           ]
         }
