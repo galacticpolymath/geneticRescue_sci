@@ -4,7 +4,7 @@
     "type": "video",
     "title": "The Return of The Florida Panther",
     "description": "Did you know Florida had panthers? The Florida panther, Puma concolor coryi, is a critically endangered species in the southern regions of Florida. Once rare and almost never seen, the Florida panther has bounced back from a brush with extinction to the point where more frequent encounters have people asking questions about this apex predator. There are misconceptions, misinformation, and misunderstandings about the panther and its habitat, so ecologist and filmmaker Chris Morgan travelled to Florida to get to the bottom of it. ",
-    "lessonRelevance": "For Part 1: This video provides background on the plight of Florida panthers, and different viewpoints in favor or against them. Provides a starting point for discussions about different strategies for saving endangered species and a hook for exploring genetics.",
+    "lessonRelevance": "For Part 1: Gives background on the plight of Florida panthers, and different viewpoints in favor or against them. A starting point for discussions about different strategies for saving endangered species.",
     "by": "Chris Morgan (Wildlife Media)",
     "byLink": "https://www.youtube.com/channel/UC59OLxYOFLRqS_0HDhLs7iQ",
     "keywords": "endangered species, Florida panther, puma, conservation, success story",
@@ -15,6 +15,20 @@
   },
   {
     "order": 2,
+    "type": "video",
+    "title": "Are endangered species worth saving?",
+    "description": "Species are going extinct at crazy high rates. Does it matter?",
+    "lessonRelevance": "For Part 3: Gets students thinking about the costs of losing a species to set the stakes for a role play scenario.",
+    "by": "Above the Noise",
+    "byLink": "https://www.youtube.com/channel/UC4K10PNjqgGLKA3lo5V8KdQ",
+    "keywords": null,
+    "mainLink": "https://www.youtube.com/embed/h5eTqjzQZDY",
+    "vimeoLink": null,
+    "filename": null,
+    "otherLink": null
+  },
+  {
+    "order": 3,
     "type": "video",
     "title": "What is genetic rescue, and can we use it to save endangered species?",
     "description": "This video is part of \"Genetic Rescue to the Rescue,\" a Galactic Polymath lesson about endangered species, why they matter, what we lose if they go extinct, and what we can do to save them. \nFlorida panthers (Puma concolor coryi) nearly went extinct in the 1990s. Here, we learn what happened and how wildlife managers tried to bring them back. Through this story, we explore connected concepts of how habitat fragmentation affects the flow of genes, and how this can lead to increasing risk of extinction in endangered species (the \"Extinction Vortex\"). The video ends with an open-ended question about what common species we could use to study endangered species recovery so that we don't run the chance of inadvertently destroying what we're trying to save.\nCheck out the lesson at https://www.galacticpolymath.com/lessons",
@@ -28,7 +42,7 @@
     "otherLink": null
   },
   {
-    "order": 3,
+    "order": 4,
     "type": "video",
     "title": "Saving a species through genetic rescue: Why we need model organisms",
     "description": "This video is part of \"Genetic Rescue to the Rescue,\" a Galactic Polymath lesson about endangered species, why they matter, what we lose if they go extinct, and what we can do to save them. This video focuses on model organisms—species used to study a problem that is impossible to study in the target organism. In this case, we learn about how Dr. Sarah Fitzpatrick, PhD uses Trinidadian guppies to study genetic rescue—a strategy used to bring back species like endangered Florida panthers from the brink of extinction. \nCheck out the lesson at https://www.galacticpolymath.com/lessons",

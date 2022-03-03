@@ -212,12 +212,28 @@
         "partPreface": "Delves into what can (or should) be done to help save the Florida Panther. ",
         "chunks": [
           {
-            "chunkTitle": "Role Play: What to do about the Florida Panther?",
+            "chunkTitle": "Engagement",
             "chunkStart": 0,
-            "chunkDur": 25,
+            "chunkDur": 6,
             "steps": [
               {
                 "Step": 1,
+                "StepTitle": "Watch Video",
+                "StepQuickDescription": "Students watch [▶\"Are endangered species worth saving?\"](https://www.youtube.com/watch?v=h5eTqjzQZDY) to get them thinking about what is at stake.",
+                "StepDetails": null,
+                "Vocab": null,
+                "VariantNotes": null,
+                "TeachingTips": "Students are not asked anything about the video by default, but you might ask students to quickly think-pair-share an answer to the question: \"Are endangered species worth saving?\""
+              }
+            ]
+          },
+          {
+            "chunkTitle": "Role Play: What to do about the Florida Panther?",
+            "chunkStart": 6,
+            "chunkDur": 20,
+            "steps": [
+              {
+                "Step": 2,
                 "StepTitle": "Brainstorming",
                 "StepQuickDescription": "Students simulate being on a committee in 1994 that will decide what to do about Florida Panthers.",
                 "StepDetails": "Divide students into 3 groups and assign each a different option to advocate: let nature run its course; start a captive breeding program; or use genetic rescue. Allow groups 5-10 minutes to brainstorm the pros and cons of their arguments and fill out questions 1 & 2 on the worksheet. ",
@@ -226,7 +242,7 @@
                 "TeachingTips": "For a large class, you can have multiple sets of 3. (e.g. have students number of 1-3, and have 3 group stations for the front half and 3 group stations for the back half of the room)"
               },
               {
-                "Step": 2,
+                "Step": 3,
                 "StepTitle": "Gallery Walk",
                 "StepQuickDescription": null,
                 "StepDetails": "Groups then complete a gallery walk to observe what others worked on and finish by returning to their own group and finishing the worksheet based on what they learned.",
@@ -238,11 +254,11 @@
           },
           {
             "chunkTitle": "Share Out! Pros/Cons of Saving the Florida Panther",
-            "chunkStart": 25,
-            "chunkDur": 20,
+            "chunkStart": 26,
+            "chunkDur": 19,
             "steps": [
               {
-                "Step": 3,
+                "Step": 4,
                 "StepTitle": "Class Discussion",
                 "StepQuickDescription": "Each group will have the opportunity to share the pros & cons they brainstormed for each committee scenario. ",
                 "StepDetails": "Write or type the pros & cons on three large charts for each scenario based on the students' input. Once all three options have been discussed, each student gets to vote on a course of action. Ask students to provide evidence and reasoning to support their choice.",
@@ -251,7 +267,7 @@
                 "TeachingTips": "If you want to bring in some technology, you could add (or ask students to add) observations to a [Google Jamboard](https://ditchthattextbook.com/jamboard/) or [Padlet](https://www.techlearning.com/how-to/what-is-padlet-and-how-does-it-work-for-teachers-and-students)."
               },
               {
-                "Step": 4,
+                "Step": 5,
                 "StepTitle": "Scaffolding",
                 "StepQuickDescription": "Slides go over the major pros & cons for each scenario, in case anything was missed.",
                 "StepDetails": null,
@@ -260,7 +276,7 @@
                 "TeachingTips": null
               },
               {
-                "Step": 5,
+                "Step": 6,
                 "StepTitle": "Vote!",
                 "StepQuickDescription": "Ask students to vote on a course of action",
                 "StepDetails": "Ask them to provide evidence and reasoning to support their choice.",
@@ -269,7 +285,7 @@
                 "TeachingTips": null
               },
               {
-                "Step": 6,
+                "Step": 7,
                 "StepTitle": "Students Finish Worksheet on their Own",
                 "StepQuickDescription": null,
                 "StepDetails": null,

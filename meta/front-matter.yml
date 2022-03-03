@@ -1,9 +1,9 @@
 id: '3'
 ShortTitle: geneticRescue
 TemplateVer: 0.2.7
-galacticPubsVer: 0.6.5
+galacticPubsVer: 0.6.6
 FirstPublicationDate: 2021-12-15 17:06:16
-LastUpdated: 2022-02-27 17:34:45
+LastUpdated: 2022-03-03 14:40:51
 GPCatalogPath: https://catalog.galacticpolymath.com/lessons/geneticRescue_sci/LESSON.json
 GitHubPath: git@github.com:galacticpolymath/geneticRescue_sci.git
 PublicationStatus: Live
@@ -34,7 +34,9 @@ LearningChart: assets/learning-plots/GP-Learning-Chart.png
 LearningChart_params_centralText: ''
 LearningChart_params_caption: ''
 LearningChart_params_captionN: no
-SupportingMedia: assets/supporting-media/fitzpatrick_paper_screenshot.png
+SupportingMedia:
+- assets/supporting-media/ex_P2classdata.jpg
+- assets/supporting-media/fitzpatrick_paper_screenshot.png
 DrivingQ: Can genetic rescue succeed in bringing a population back from the verge
   of extinction?
 EssentialQ: How do we use scientific methods to measure and develop solutions for
@@ -48,7 +50,9 @@ LearningObj: |-
   6. Propose a model organism to use for research on species that are endangered or infeasible to study.
   7. Interpret scatter plot data from a model organism (Trinidadian guppies) and compare to related data in an endangered species (Florida panthers) to draw broader conclusions about the effectiveness of genetic rescue.
   8. Assess the potential risks and benefits of genetic rescue for a particular species, and propose a course of action.
-MiscMD: ''
+MiscMD: |-
+  #### Hook:
+  - Students are drawn into rigorous activities on genetic, ecological, and social topics through the narrative of a real, ongoing conservation challenge for a charismatic big cat.
 Tags:
 - genetic rescue
 - genetics
