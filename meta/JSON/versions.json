@@ -15,8 +15,8 @@
         {
           "version": "0.1.1",
           "date": "Dec 12, 2021",
-          "summary": "Fixed version number issue & added Video Links to Teach it in 15 Quick Prep",
-          "notes": null,
+          "summary": "minor update",
+          "notes": "Fixed version number issue & added Video Links to Teach it in 15 Quick Prep",
           "acknowledgments": null
         },
         {
@@ -29,9 +29,16 @@
         {
           "version": "0.3.0",
           "date": "Feb 17, 2022",
-          "summary": "Major revisions to Part 2",
+          "summary": "Major revisions to Part 3",
           "notes": "Added new Above the Noise video engagement at the beginning & numerous tweaks to presentation and worksheet to improve flow & aid student understanding.",
-          "acknowledgments": "Needed changes became apparent after Matt Wilkins taught the lesson to a group of 7-8th graders at WEB Tutorial in Nashville, TN."
+          "acknowledgments": null
+        },
+        {
+          "version": "0.4.0",
+          "date": "Mar 03, 2022",
+          "summary": "Major updates to documentation",
+          "notes": "Added more background information & the extensions section",
+          "acknowledgments": null
         }
       ]
     }
