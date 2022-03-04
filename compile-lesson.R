@@ -3,7 +3,6 @@
 
 require(remotes)
 install_github("galacticpolymath/galacticPubs")
-# install_github("galacticpolymath/galacticEdTools")
 library(galacticPubs)
 # library(galacticEdTools)
 
