@@ -3,7 +3,7 @@ ShortTitle: geneticRescue
 TemplateVer: 0.2.7
 galacticPubsVer: 0.6.6
 FirstPublicationDate: 2021-12-15 17:06:16
-LastUpdated: 2022-03-03 18:27:46
+LastUpdated: 2022-03-03 18:33:42
 GPCatalogPath: https://catalog.galacticpolymath.com/lessons/geneticRescue_sci/LESSON.json
 GitHubPath: git@github.com:galacticpolymath/geneticRescue_sci.git
 PublicationStatus: Live
@@ -82,7 +82,7 @@ Extensions: One exciting extension could be to have students investigate map dat
   of Florida panther mortality (car crashes). Students could be asked to develop their
   own recommendation for mitigation (a wildlife overpass, increased signage, or decreased
   speed limit) on specific roadways that show high numbers of collisions.
-Background: "Watch this video for a lot of panther background: {vid3}\nThe Florida
+Background: "Watch this video for a lot of panther background: {vid3}  \nThe Florida
   panther is a unique subspecies (*Puma concolor coryi*) of the American puma (*Puma
   concolor*). It's not to be confused with black panthers, which are the dark (melanistic)
   forms of leopards or jaguars. The Florida panther was nearly driven to extinction
@@ -92,7 +92,7 @@ Background: "Watch this video for a lot of panther background: {vid3}\nThe Flori
   superficial traits like: kinked tails and cowlicks in their fur, to more significant
   problems like: cryptorchidism (undescended testicles, causing infertility in males)
   and heart defects. Wildlife managers decided to relocate 8 female Pumas from Texas
-  (*Puma concolor couguar*) into Florida to introduce needed genetic variation. .\n\nStudents
+  (*Puma concolor couguar*) into Florida to introduce needed genetic variation.  \n\nStudents
   will get to analyze 20 years worth of monitoring data to assess whether genetic
   rescue was successful (it was! There are now over 200 Florida panthers). At the
   same time, students will compare these results to a paired data set in Trinidadian
