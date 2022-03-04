@@ -3,7 +3,7 @@ ShortTitle: geneticRescue
 TemplateVer: 0.2.7
 galacticPubsVer: 0.6.6
 FirstPublicationDate: 2021-12-15 17:06:16
-LastUpdated: 2022-03-03 23:03:48
+LastUpdated: 2022-03-03 23:11:45
 GPCatalogPath: https://catalog.galacticpolymath.com/lessons/geneticRescue_sci/LESSON.json
 GitHubPath: git@github.com:galacticpolymath/geneticRescue_sci.git
 PublicationStatus: Live
@@ -98,9 +98,8 @@ Background: "Watch this video for a lot of panther background: {vid3}  \n\nThe F
   same time, students will compare these results to a paired data set in Trinidadian
   guppies to understand how model organisms can be used to answer scientific questions
   that are difficult to answer in an endangered or difficult-to-study species.\n\n####
-  Related Florida Panther Paper:\n![screenshot of panther study paper](VanDeKerk_paper_screenshot.png)\n[van
-  de Kerk M, et al. Dynamics, Persistence, and Genetic Management of the Endangered
-  Florida Panther Population. Wildl Monogr. 2019;203(1):3–35](https://wildlife.onlinelibrary.wiley.com/doi/10.1002/wmon.1041)\n\n\nThis
+  Related Florida Panther Paper:\n![screenshot of panther study paper](VanDeKerk_paper_screenshot.png)\n[Link
+  to study](https://wildlife.onlinelibrary.wiley.com/doi/10.1002/wmon.1041)\n\n\nThis
   video connects genetic rescue research on Florida panthers to the Trinidadian guppy
   model species: {vid 4}\nTo study many details of genetic rescue in a model system
   where we don't have to worry about inadvertently driving a species extinct, Dr.
@@ -109,11 +108,9 @@ Background: "Watch this video for a lot of panther background: {vid3}  \n\nThe F
   genetic variation into upstream pools with only a few, highly inbred fish. \n\nThis
   genetic rescue experiment was indeed successful, and after only a few months, genetic
   variation increased and the population rebounded from around 20 individuals to over
-  1,000.\n\n\n#### Related Guppy Paper:\n![screenshot of Scientific Study](fitzpatrick_paper_screenshot.png)\n[Fitzpatrick
-  SW, et al. Gene flow from an adaptively divergent source causes rescue through genetic
-  and demographic factors in two wild populations of Trinidadian guppies. Evol Appl.
-  2016;9(7):879–91. ](https://onlinelibrary.wiley.com/doi/10.1111/eva.12356)\n\n####
-  Further Reading\n- [USFWS Florida Panther Profile](https://www.fws.gov/refuge/florida_panther/wah/panther.html)\n-
+  1,000.\n\n\n#### Related Guppy Paper:\n![screenshot of Scientific Study](fitzpatrick_paper_screenshot.png)\n[Link
+  to study](https://onlinelibrary.wiley.com/doi/10.1111/eva.12356)\n\n#### Further
+  Reading\n- [USFWS Florida Panther Profile](https://www.fws.gov/refuge/florida_panther/wah/panther.html)\n-
   [Nat Geo: Planned roads could imperil Florida's panthers—and last remaining wilderness](https://www.nationalgeographic.com/animals/article/florida-toll-road-threatens-wildlife-panthers?loggedin=true)\n-
   [The Florida Panther: Past, Present and Future](https://edis.ifas.ufl.edu/publication/UW402)\n-
   [America’s cat is on the comeback](https://www.americanscientist.org/article/americas-cat-is-on-the-comeback)\n-
