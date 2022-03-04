@@ -4,7 +4,7 @@
   "TemplateVer": "0.2.7",
   "galacticPubsVer": "0.6.6",
   "FirstPublicationDate": "2021-12-15 17:06:16",
-  "LastUpdated": "2022-03-03 21:08:40",
+  "LastUpdated": "2022-03-03 21:54:52",
   "GPCatalogPath": "https://catalog.galacticpolymath.com/lessons/geneticRescue_sci/LESSON.json",
   "GitHubPath": "git@github.com:galacticpolymath/geneticRescue_sci.git",
   "PublicationStatus": "Live",
@@ -1256,7 +1256,7 @@
     "credits": {
       "__component": "lesson-plan.collapsible-text-section",
       "SectionTitle": "Credits",
-      "Content": "#### Lead Author and Creative Director:\nMatt Wilkins, PhD\nIf you liked this lesson, please help spread the word! Feel free to tag me ([@mattwilkinsbio](https://twitter.com/mattwilkinsbio)) and GP ([@galacticPM](https://twitter.com/galacticPM)) on Twitter with your experiences and student questions! And don’t forget to [sign up for our mailing list](https://galacticpolymath.us8.list-manage.com/subscribe?u=42413c3d307f9b69fd5d5319e&id=33924ebd91) to hear about what’s coming up next!”\n\n#### Sponsor and Producer\n[Sarah Fitzpatrick, PhD](http://swfitz.com/)\n\n#### Animation and Video Editing:\n[Audrey Serene Barns](https://audreyserene.com/) \n\n#### Narration and Scoring:\nStephanie Castillo (aka [Phuture Doctors](https://phuturedoctors.com/))\n\n#### Education Consultants:\n- [Karlisa Callwood, PhD](https://www.perryinstitute.org/staff/dr-karlisa-callwood)\n- [Pedro Márquez-Zacarías](https://twitter.com/pedrom_z)\n- [Sarah Grasty, MS](https://www.linkedin.com/in/sarah-grasty-988676b0/)",
+      "Content": "#### Lead Author and Creative Director:\nMatt Wilkins, PhD\nIf you liked this lesson, please help spread the word! Feel free to tag me ([@mattwilkinsbio](https://twitter.com/mattwilkinsbio)) and GP ([@galacticPM](https://twitter.com/galacticPM)) on Twitter with your experiences and student questions! \n\nAnd please [sign up for our mailing list](https://galacticpolymath.us8.list-manage.com/subscribe?u=42413c3d307f9b69fd5d5319e&id=33924ebd91) to hear what’s coming up next!”\n\n#### Sponsor and Producer\n[Sarah Fitzpatrick, PhD](http://swfitz.com/)\n\n#### Animation and Video Editing:\n[Audrey Serene Barns](https://audreyserene.com/) \n\n#### Narration and Scoring:\nStephanie Castillo (aka [Phuture Doctors](https://phuturedoctors.com/))\n\n#### Education Consultants:\n- [Karlisa Callwood, PhD](https://www.perryinstitute.org/staff/dr-karlisa-callwood)\n- [Pedro Márquez-Zacarías](https://twitter.com/pedrom_z)\n- [Sarah Grasty, MS](https://www.linkedin.com/in/sarah-grasty-988676b0/)",
       "InitiallyExpanded": true
     },
     "acknowledgments": {
@@ -1264,8 +1264,8 @@
       "SectionTitle": "Acknowledgments",
       "Data": [
         {
-          "role": "Peer Reviewer + Data Provider",
-          "def": "(Provided Florida panther data and expertise)",
+          "role": "Data",
+          "def": "(Provided Florida panther data and expert feedback on Florida panther conservation)",
           "records": [
             {
               "name": "Madelon van de Kerk, PhD",
@@ -1277,25 +1277,38 @@
           ]
         },
         {
-          "role": "Data Provider",
-          "def": "(Provided guppy data)",
+          "role": "\"Return of the Panther\" Video",
+          "def": "(For more, amazing videos like this, check out Chris's YouTube channel!)",
           "records": [
             {
-              "name": "Sarah Fitzpatrick, PhD",
-              "url": "http://swfitz.com/",
-              "title": "Assistant Professor",
-              "affiliation": "W.K. Kellogg Biological Station",
-              "location": "Hickory Corners, MI "
+              "name": "Chris Morgan",
+              "url": "https://youtu.be/Xr1SstxYW8w",
+              "title": "Filmmaker, bear ecologist",
+              "affiliation": "Wildlife Media",
+              "location": null
             }
           ]
         },
         {
-          "role": "Provided Images of Florida Panthers",
+          "role": "\"Are endangered species worth saving?\" Video",
+          "def": "(Check out other fun, thought-provoking videos at Above the Noise!)",
+          "records": [
+            {
+              "name": "Myles Bess and team",
+              "url": "https://www.youtube.com/channel/UC4K10PNjqgGLKA3lo5V8KdQ",
+              "title": null,
+              "affiliation": "Above the Noise",
+              "location": null
+            }
+          ]
+        },
+        {
+          "role": "Images of Florida Panthers",
           "def": "(Florida Panthers & abnormalities in Part 1 Presentations)",
           "records": [
             {
               "name": "Panther Team",
-              "url": null,
+              "url": "https://www.fws.gov/species/florida-panther-puma-concolor-coryi",
               "title": null,
               "affiliation": null,
               "location": null
@@ -1303,8 +1316,8 @@
           ]
         },
         {
-          "role": "Provided Photo of Other \"Panthers\"",
-          "def": "(Keira & Neron Jaguars in Part 1 Presentation)",
+          "role": "Photo of Black Panthers",
+          "def": "(\"Keira & Neron Jaguars\" in Part 1 Presentation)",
           "records": [
             {
               "name": "Alma Leaper",

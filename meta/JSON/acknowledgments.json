@@ -3,8 +3,8 @@
   "SectionTitle": "Acknowledgments",
   "Data": [
     {
-      "role": "Peer Reviewer + Data Provider",
-      "def": "(Provided Florida panther data and expertise)",
+      "role": "Data",
+      "def": "(Provided Florida panther data and expert feedback on Florida panther conservation)",
       "records": [
         {
           "name": "Madelon van de Kerk, PhD",
@@ -16,25 +16,38 @@
       ]
     },
     {
-      "role": "Data Provider",
-      "def": "(Provided guppy data)",
+      "role": "\"Return of the Panther\" Video",
+      "def": "(For more, amazing videos like this, check out Chris's YouTube channel!)",
       "records": [
         {
-          "name": "Sarah Fitzpatrick, PhD",
-          "url": "http://swfitz.com/",
-          "title": "Assistant Professor",
-          "affiliation": "W.K. Kellogg Biological Station",
-          "location": "Hickory Corners, MI "
+          "name": "Chris Morgan",
+          "url": "https://youtu.be/Xr1SstxYW8w",
+          "title": "Filmmaker, bear ecologist",
+          "affiliation": "Wildlife Media",
+          "location": null
         }
       ]
     },
     {
-      "role": "Provided Images of Florida Panthers",
+      "role": "\"Are endangered species worth saving?\" Video",
+      "def": "(Check out other fun, thought-provoking videos at Above the Noise!)",
+      "records": [
+        {
+          "name": "Myles Bess and team",
+          "url": "https://www.youtube.com/channel/UC4K10PNjqgGLKA3lo5V8KdQ",
+          "title": null,
+          "affiliation": "Above the Noise",
+          "location": null
+        }
+      ]
+    },
+    {
+      "role": "Images of Florida Panthers",
       "def": "(Florida Panthers & abnormalities in Part 1 Presentations)",
       "records": [
         {
           "name": "Panther Team",
-          "url": null,
+          "url": "https://www.fws.gov/species/florida-panther-puma-concolor-coryi",
           "title": null,
           "affiliation": null,
           "location": null
@@ -42,8 +55,8 @@
       ]
     },
     {
-      "role": "Provided Photo of Other \"Panthers\"",
-      "def": "(Keira & Neron Jaguars in Part 1 Presentation)",
+      "role": "Photo of Black Panthers",
+      "def": "(\"Keira & Neron Jaguars\" in Part 1 Presentation)",
       "records": [
         {
           "name": "Alma Leaper",
