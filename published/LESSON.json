@@ -4,7 +4,7 @@
   "TemplateVer": "0.2.7",
   "galacticPubsVer": "0.6.6",
   "FirstPublicationDate": "2021-12-15 17:06:16",
-  "LastUpdated": "2022-03-03 23:11:45",
+  "LastUpdated": "2022-03-03 23:57:15",
   "GPCatalogPath": "https://catalog.galacticpolymath.com/lessons/geneticRescue_sci/LESSON.json",
   "GitHubPath": "git@github.com:galacticpolymath/geneticRescue_sci.git",
   "PublicationStatus": "Live",
@@ -132,7 +132,7 @@
           "otherLink": null
         }
       ],
-      "QuickPrep": "1. Watch Video(s) for Part 1\n2. Look over <AnchorLink href=\"#background\"> Background <\/AnchorLink>\n3. Look over <AnchorLink href=\"#procedure\"> Procedure <\/AnchorLink>\n4. <AnchorLink href=\"#teaching_materials\"> Teach it! <\/AnchorLink>\n5. Repeat for each part and <AnchorLink href=\"#feedback\"> tell us what you think. <\/AnchorLink>",
+      "QuickPrep": "1. Watch Video(s) for Part 1\n2. Look over the <AnchorLink href=\"#teaching_materials\"> Teaching Materials <\/AnchorLink>\n3. Get detailed, easy-to-follow instructions in <AnchorLink href=\"#procedure\"> Procedure <\/AnchorLink>\n4. Skim the <AnchorLink href=\"#background\"> Background <\/AnchorLink> to go a bit deeper\n5. Teach it and <AnchorLink href=\"#feedback\"> let know what you think! <\/AnchorLink>",
       "InitiallyExpanded": true
     },
     "teaching-materials": {
@@ -1282,7 +1282,7 @@
           "records": [
             {
               "name": "Chris Morgan",
-              "url": "https://youtu.be/Xr1SstxYW8w",
+              "url": "https://www.youtube.com/channel/UC59OLxYOFLRqS_0HDhLs7iQ",
               "title": "Filmmaker, bear ecologist",
               "affiliation": "Wildlife Media",
               "location": null
