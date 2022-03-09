@@ -3,7 +3,7 @@ ShortTitle: geneticRescue
 TemplateVer: 0.2.7
 galacticPubsVer: 0.6.6
 FirstPublicationDate: 2021-12-15 17:06:16
-LastUpdated: 2022-03-08 16:02:29
+LastUpdated: 2022-03-08 21:52:11
 GPCatalogPath: https://catalog.galacticpolymath.com/lessons/geneticRescue_sci/LESSON.json
 GitHubPath: git@github.com:galacticpolymath/geneticRescue_sci.git
 PublicationStatus: Live
@@ -73,7 +73,7 @@ QuickPrep: |-
   2. Look over the [Teaching Materials](#teaching_materials)
   3. Get detailed, easy-to-follow instructions in [Procedure](#procedure)
   4. Skim the [Background](#background) to go a bit deeper
-  5. Teach it and [let know what you think!](#feedback)
+  5. Teach it and [let us know what you think!](#feedback)
 Bonus: ''
 Extensions: One exciting extension could be to have students investigate map data
   of panther car collision mortality events over time. [This incredible interactive
