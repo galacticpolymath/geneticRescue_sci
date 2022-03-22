@@ -4,7 +4,8 @@
 require(remotes)
 install_github("galacticpolymath/galacticPubs")
 library(galacticPubs)
-# library(galacticEdTools)
+install_github("galacticpolymath/galacticEdTools")
+library(galacticEdTools)
 
 googledrive::drive_auth() #need to authorize your account first time you use this
 

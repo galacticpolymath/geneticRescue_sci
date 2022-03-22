@@ -3,7 +3,7 @@ ShortTitle: geneticRescue
 TemplateVer: 0.2.7
 galacticPubsVer: 0.6.6
 FirstPublicationDate: 2021-12-15 17:06:16
-LastUpdated: 2022-03-08 21:52:11
+LastUpdated: 2022-03-15 18:24:06
 GPCatalogPath: https://catalog.galacticpolymath.com/lessons/geneticRescue_sci/LESSON.json
 GitHubPath: git@github.com:galacticpolymath/geneticRescue_sci.git
 PublicationStatus: Live
@@ -101,7 +101,7 @@ Background: "Watch this video for a lot of panther background: {vid3}  \n\nThe F
   Related Florida Panther Paper:\n![screenshot of panther study paper](VanDeKerk_paper_screenshot.png)\n[Link
   to study](https://wildlife.onlinelibrary.wiley.com/doi/10.1002/wmon.1041)\n\n\nThis
   video connects genetic rescue research on Florida panthers to the Trinidadian guppy
-  model species: {vid 4}\nTo study many details of genetic rescue in a model system
+  model species: {vid 4}\n\nTo study many details of genetic rescue in a model system
   where we don't have to worry about inadvertently driving a species extinct, Dr.
   Sarah Fitzpatrick and colleagues went to Trinidad. They took advantage of previous
   experiments that had moved guppies from a downstream population that had lots of
