@@ -8,8 +8,6 @@ quantile(deaths$Y,na.rm=T)
 
 #these are the lat/lon view limits for the overall map
 b<-data.frame(left=-82,right=-80.5,bottom=25.9,top=26.95)
-#Get map
-mapData<-get_stamenmap(unlist(b),zoom=12,"toner-background")
 
 
 #How much to inset quadrant labels
@@ -43,8 +41,14 @@ table(deaths2$cause)
 
 #create subset for labeling and tabulation
 head(deaths2)
-d_17_21<-subset(deaths2,YEAR>=2017&cause=="Vehicle")
-nrow(d_17_21)
+d_17_20<-subset(deaths2,YEAR>=2017&YEAR<2021&cause=="Vehicle")
+nrow(d_17_20)
+#reassign ID for subset that will be tabulated for students
+d_17_20$id
+d_17_20$id<-1:nrow(d_17_20)
+d_17_20$id
+#Get map
+mapData<-get_stamenmap(unlist(b),zoom=10,"toner")
 
 g<-ggmap(mapData)+
   geom_point(data=deaths2,aes(x=X,y=Y,shape=cause))+
@@ -52,11 +56,11 @@ g<-ggmap(mapData)+
   geom_text(data=regions,aes(x=lab_x,y=lab_y,label=quad,hjust=lab_hjust,vjust=lab_vjust),family="sans",fontface=1,color="gray30",size=12)+
   galacticEdTools::theme_galactic()+
   theme(panel.border=element_rect(color="#363636",fill="transparent"),axis.ticks = element_line(colour="#363636"),plot.caption=element_text(size=15))+
-  labs(x="Longitude",y="Latitude",title="Florida Panther Deaths, All Regions (1972-2021)",caption="SOURCE: FL Fish & Wildlife Conservation Commission")+
+  labs(x="Longitude",y="Latitude",title="Florida Panther Deaths, All Regions (1972-2020)",caption="SOURCE: FL Fish & Wildlife Conservation Commission")+
   scale_shape_manual(values=c(8,10,5,4),name="Cause of Death")
 g
 
-gpsave("collisions/deaths_all-causes_1972-2021.png",width=5,height=3.5)
+gpsave("collisions/deaths_all-causes_1972-2020.png",width=5,height=3.5)
 
 ## Now create function to make individual region maps
 map_region<-function(reg,ttl,zoom=13){
@@ -70,26 +74,27 @@ map_region<-function(reg,ttl,zoom=13){
   g<-ggmap(mapdat)+
   geom_point(data=df.1,aes(x=X,y=Y,shape=cause))+
   galacticEdTools::theme_galactic(text.cex = 1.4)+
-  theme(panel.border=element_rect(color="#363636",fill="transparent"),axis.ticks = element_line(colour="#363636"))+
+  theme(panel.border=element_rect(color="#363636",fill="transparent"),axis.ticks = element_line(colour="#363636"),
+        plot.caption=element_text(lineheight=0.4),legend.margin=margin(0,0,0,0))+
   labs(x="Longitude",y="Latitude",title=ttl,caption="Deaths since 2017 are labeled with ID numbers\nSOURCE: FL Fish & Wildlife Conservation Commission")+
   scale_shape_manual(values=c(4),name="Cause of Death")+
-    ggrepel::geom_label_repel(data=d_17_21,aes(x=X,y=Y,label=id),seed = 30,max.time=2,label.padding = .1 ,box.padding=.5,direction="both",max.overlaps=30, fontface=2, size=8,col="gray40")
+    ggrepel::geom_label_repel(data=d_17_20,aes(x=X,y=Y,label=id),seed = 30,max.time=2,label.padding = .1 ,box.padding=.5,direction="both",max.overlaps=30, fontface=2, size=8,col="gray40")
 g
 
 }
 
 (m1<-map_region(1,"FL Panther Vehicle Deaths: Quadrant I",zoom=10))
-gpsave("collisions/deaths_vehicles_Region1_1972-2021.png",plot=m1,width=5,height=3.5,dpi = 400)
+gpsave("collisions/deaths_vehicles_Region1_1972-2020.png",plot=m1,width=5,height=3.5,dpi = 400)
 
  m2<-map_region(2,"FL Panther Vehicle Deaths: Quadrant II",zoom=10)
-gpsave("collisions/deaths_vehicles_Region2_1972-2021.png",plot=m2,width=5,height=3.5,dpi = 400)
+gpsave("collisions/deaths_vehicles_Region2_1972-2020.png",plot=m2,width=5,height=3.5,dpi = 400)
 
 m3<-map_region(3,"FL Panther Vehicle Deaths: Quadrant III",zoom=10)
-gpsave("collisions/deaths_vehicles_Region3_1972-2021.png",plot=m3,width=5,height=3.5,dpi = 400)
+gpsave("collisions/deaths_vehicles_Region3_1972-2020.png",plot=m3,width=5,height=3.5,dpi = 400)
 
 m4<-map_region(4,"FL Panther Vehicle Deaths: Quadrant IV",zoom=10)
-gpsave("collisions/deaths_vehicles_Region4_1972-2021.png",plot=m4,width=5,height=3.5,dpi = 400)
+gpsave("collisions/deaths_vehicles_Region4_1972-2020.png",plot=m4,width=5,height=3.5,dpi = 400)
 
-#Output subset of data
+ #Output subset of data
 
-write.csv(d_17_21,"data/collisions_2017-2021.csv")
+write.csv(d_17_20,"data/collisions_2017-2020.csv")

@@ -17,3 +17,7 @@ Icon
 Icon?
 cachedPhyloPicPNGs
 testing.png
+*.gsheet
+*.gdoc
+*.gslides
+*.gform
