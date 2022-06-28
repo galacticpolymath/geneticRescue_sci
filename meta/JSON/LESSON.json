@@ -1,10 +1,16 @@
 {
   "id": "3",
   "ShortTitle": "geneticRescue",
-  "TemplateVer": "0.2.7",
-  "galacticPubsVer": "0.6.6",
+  "Language": "English",
+  "Country": "United States",
+  "lang": "en",
+  "lng": "eng",
+  "locale": "en-US",
+  "TemplateVer": "0.3.3",
+  "galacticPubsVer": "0.8.0",
   "FirstPublicationDate": "2021-12-15 17:06:16",
-  "LastUpdated": "2022-03-15 18:24:06",
+  "LastUpdated": "2022-06-28 17:03:48",
+  "URL": "https://galacticpolymath.com/lessons/3",
   "GPCatalogPath": "https://catalog.galacticpolymath.com/lessons/geneticRescue_sci/LESSON.json",
   "GitHubPath": "git@github.com:galacticpolymath/geneticRescue_sci.git",
   "PublicationStatus": "Live",
@@ -31,9 +37,10 @@
     "overview": {
       "__component": "lesson-plan.overview",
       "EstLessonTime": "5 x 45 min",
+      "GradesOrYears": "Grades",
       "ForGrades": "9-12",
       "TargetSubject": "Science",
-      "Text": "#### Driving Question(s):\nCan genetic rescue succeed in bringing a population back from the verge of extinction?\n#### Essential Question(s):\nHow do we use scientific methods to measure and develop solutions for our negative impacts on the world?\n#### Learning Objective(s):\n1. Provide examples of variation in genes, traits, and individual survival, and why each is important for a species to persist and evolve.\n2. Summarize how human activities fragment animal populations and how habitat fragmentation limits gene flow, reducing genetic variation.\n3. Predict how increasing genetic variation by introducing new individuals (i.e. by conducting genetic rescue) will impact population size.\n4. Create a logic model showing how genetic rescue occurs; i.e. how the introduction of new individuals to a small, inbred population on the verge of extinction provides needed genetic variation for the population to survive and recover.\n5. Demonstrate understanding of how reduction in both population size and genetic variation in endangered species lead to the \"extinction vortex\"—the increasing likelihood of small populations to blink out due to low population size and recessive genetics from inbreeding.\n6. Propose a model organism to use for research on species that are endangered or infeasible to study.\n7. Interpret scatter plot data from a model organism (Trinidadian guppies) and compare to related data in an endangered species (Florida panthers) to draw broader conclusions about the effectiveness of genetic rescue.\n8. Assess the potential risks and benefits of genetic rescue for a particular species, and propose a course of action.\n#### Hook:\n- Students are drawn into rigorous activities on genetics, ecology, and human-wildlife interactions through the narrative of real, ongoing conservation challenges of this charismatic big cat.",
+      "Text": "#### Driving Question(s):\nCan genetic rescue succeed in bringing a population back from the verge of extinction?\n#### Essential Question(s):\nHow do we use scientific methods to measure and develop solutions for our negative impacts on the world?\n#### Hook:\n- Students are drawn into rigorous activities on genetics, ecology, and human-wildlife interactions through the narrative of real, ongoing conservation challenges of this charismatic big cat.",
       "Tags": [
         {
           "Value": "genetic rescue"
@@ -63,6 +70,7 @@
           "Value": "extinction"
         }
       ],
+      "LearningObj": "1. Provide examples of variation in genes, traits, and individual survival, and why each is important for a species to persist and evolve.\n2. Summarize how human activities fragment animal populations and how habitat fragmentation limits gene flow, reducing genetic variation.\n3. Predict how increasing genetic variation by introducing new individuals (i.e. by conducting genetic rescue) will impact population size.\n4. Create a logic model showing how genetic rescue occurs; i.e. how the introduction of new individuals to a small, inbred population on the verge of extinction provides needed genetic variation for the population to survive and recover.\n5. Demonstrate understanding of how reduction in both population size and genetic variation in endangered species lead to the \"extinction vortex\"—the increasing likelihood of small populations to blink out due to low population size and recessive genetics from inbreeding.\n6. Propose a model organism to use for research on species that are endangered or infeasible to study.\n7. Interpret scatter plot data from a model organism (Trinidadian guppies) and compare to related data in an endangered species (Florida panthers) to draw broader conclusions about the effectiveness of genetic rescue.\n8. Assess the potential risks and benefits of genetic rescue for a particular species, and propose a course of action.",
       "SteamEpaulette": {
         "url": "https://catalog.galacticpolymath.com/lessons/geneticRescue_sci/GP-Learning-Epaulette.png"
       },
@@ -230,7 +238,7 @@
                       ]
                     },
                     {
-                      "itemTitle": "Part 1 Student Worksheet",
+                      "itemTitle": "Part 1 Teacher Worksheet",
                       "itemCat": null,
                       "links": [
                         {
@@ -244,7 +252,7 @@
                       ]
                     },
                     {
-                      "itemTitle": "Part 1 Teacher Worksheet",
+                      "itemTitle": "Part 3 Teacher Worksheet",
                       "itemCat": null,
                       "links": [
                         {
@@ -307,7 +315,7 @@
                       ]
                     },
                     {
-                      "itemTitle": "Part 2 Panther Genotype Cards for Hands On Simulation of Genetics of Inbreeding in Panthers",
+                      "itemTitle": "Part 5 Student Worksheet",
                       "itemCat": null,
                       "links": [
                         {
@@ -342,7 +350,7 @@
                       ]
                     },
                     {
-                      "itemTitle": "Part 3 Student Worksheet",
+                      "itemTitle": "Part 5 Teacher Worksheet",
                       "itemCat": null,
                       "links": [
                         {
@@ -356,7 +364,7 @@
                       ]
                     },
                     {
-                      "itemTitle": "Part 3 Teacher Worksheet",
+                      "itemTitle": "Part 1 Student Worksheet",
                       "itemCat": null,
                       "links": [
                         {
@@ -391,7 +399,7 @@
                       ]
                     },
                     {
-                      "itemTitle": "Part 4 Student Worksheet",
+                      "itemTitle": "Part 2 Panther Genotype Cards for Hands On Simulation of Genetics of Inbreeding in Panthers",
                       "itemCat": null,
                       "links": [
                         {
@@ -405,7 +413,7 @@
                       ]
                     },
                     {
-                      "itemTitle": "Part 4 Teacher Worksheet",
+                      "itemTitle": "Part 3 Student Worksheet",
                       "itemCat": null,
                       "links": [
                         {
@@ -440,7 +448,7 @@
                       ]
                     },
                     {
-                      "itemTitle": "Part 5 Student Worksheet",
+                      "itemTitle": "Part 4 Student Worksheet",
                       "itemCat": null,
                       "links": [
                         {
@@ -454,7 +462,7 @@
                       ]
                     },
                     {
-                      "itemTitle": "Part 5 Teacher Worksheet",
+                      "itemTitle": "Part 4 Teacher Worksheet",
                       "itemCat": null,
                       "links": [
                         {
@@ -514,7 +522,7 @@
                     "StepTitle": "Scientific vs. Common Names",
                     "StepQuickDescription": "Brief intro to Genus and species and why scientific names avoid confusion around common names.",
                     "StepDetails": "What we call a \"panther\" actually means a lot of different,  very distinct types of cat. ",
-                    "Vocab": "- **scientific name:** the *Genus* + *species* of an organism\n- **common name:** a local name for an organism\n- **panther:** can refer to 1) a dark variety of a jaguar or leopard  or 2) the Florida subspecies of the Puma or mountain lion",
+                    "Vocab": "- **scientific name:**  the *Genus* + *species* of an organism\n- **common name:**   a local name for an organism\n- **panther:**  can refer to 1) a dark variety of a jaguar or leopard  or 2) the Florida subspecies of the Puma or mountain lion",
                     "VariantNotes": null,
                     "TeachingTips": null
                   },
@@ -538,7 +546,7 @@
                     "Step": 4,
                     "StepTitle": "Watch Video 1",
                     "StepQuickDescription": "How do people feel about the Florida Panther?",
-                    "StepDetails": "[▶\"The Return of The Florida Panther\"](https://www.youtube.com/watch?v=Xr1SstxYW8w) explores the plight of the panther through the lens of different stakeholders (e.g. urbanites, ranchers, and Native Americans).",
+                    "StepDetails": "[▶'The Return of The Florida Panther'](https://www.youtube.com/watch?v=Xr1SstxYW8w) explores the plight of the panther through the lens of different stakeholders (e.g. urbanites, ranchers, and Native Americans).",
                     "Vocab": null,
                     "VariantNotes": null,
                     "TeachingTips": null
@@ -696,7 +704,7 @@
                   {
                     "Step": 1,
                     "StepTitle": "Watch Video",
-                    "StepQuickDescription": "Students watch [▶\"Are endangered species worth saving?\"](https://www.youtube.com/watch?v=h5eTqjzQZDY) to get them thinking about what is at stake.",
+                    "StepQuickDescription": "Students watch [▶'Are endangered species worth saving?'](https://www.youtube.com/watch?v=h5eTqjzQZDY) to get them thinking about what is at stake.",
                     "StepDetails": null,
                     "Vocab": null,
                     "VariantNotes": null,
@@ -788,7 +796,7 @@
                   {
                     "Step": 1,
                     "StepTitle": "Overview",
-                    "StepQuickDescription": "Students watch part of [▶\"What is genetic rescue, and can we use it to save endangered species?\"](https://www.youtube.com/watch?v=oFQmNq8sJ2Y&list=PLz-D3xOC0d88kLYQLB9xeUz7gAaO1JJZb&index=2) to review and go deeper into what genetic rescue is and why it is so important for a population to have genetic variation. ",
+                    "StepQuickDescription": "Students watch part of [▶'What is genetic rescue, and can we use it to save endangered species?'](https://www.youtube.com/watch?v=oFQmNq8sJ2Y&list=PLz-D3xOC0d88kLYQLB9xeUz7gAaO1JJZb&index=2) to review and go deeper into what genetic rescue is and why it is so important for a population to have genetic variation. ",
                     "StepDetails": null,
                     "Vocab": "- **habitat fragmentation:** the process of breaking a habitat up into disconnected pieces",
                     "VariantNotes": null,
@@ -804,7 +812,7 @@
                   {
                     "Step": 2,
                     "StepTitle": "The Extinction Vortex",
-                    "StepQuickDescription": "Students continue watching [▶\"What is genetic rescue, and can we use it to save endangered species?\"](https://www.youtube.com/watch?v=oFQmNq8sJ2Y&list=PLz-D3xOC0d88kLYQLB9xeUz7gAaO1JJZb&index=2) to learn more about what an extinction vortex is and how populations can be saved from this circumstance.",
+                    "StepQuickDescription": "Students continue watching [▶'What is genetic rescue, and can we use it to save endangered species?'](https://www.youtube.com/watch?v=oFQmNq8sJ2Y&list=PLz-D3xOC0d88kLYQLB9xeUz7gAaO1JJZb&index=2) to learn more about what an extinction vortex is and how populations can be saved from this circumstance.",
                     "StepDetails": "They are then asked to fill out a concept map to demonstrate understanding of the Extinction Vortex. The slides then walk through a discussion of the logic behind the correct concept map.",
                     "Vocab": "- **extinction:** the dying out of a species due to environmental or evolutionary changes\n- **concept map:** a diagram that shows how different inputs or parts of a system affect each other",
                     "VariantNotes": null,
@@ -862,7 +870,7 @@
                   {
                     "Step": 1,
                     "StepTitle": "Genetic Rescue in Action",
-                    "StepQuickDescription": "Students review the end of [▶\"What is genetic rescue, and can we use it to save endangered species?\"](https://www.youtube.com/watch?v=oFQmNq8sJ2Y&list=PLz-D3xOC0d88kLYQLB9xeUz7gAaO1JJZb&index=2) and go over the previous day's worksheet.",
+                    "StepQuickDescription": "Students review the end of [▶'What is genetic rescue, and can we use it to save endangered species?'](https://www.youtube.com/watch?v=oFQmNq8sJ2Y&list=PLz-D3xOC0d88kLYQLB9xeUz7gAaO1JJZb&index=2) and go over the previous day's worksheet.",
                     "StepDetails": "Tortoises are the only bad option listed, as they have a slow generation time and are not common. The other species are all actual models for genetic rescue research.",
                     "Vocab": null,
                     "VariantNotes": null,
@@ -878,7 +886,7 @@
                   {
                     "Step": 2,
                     "StepTitle": "Hear it from a Scientist!",
-                    "StepQuickDescription": "Dr. Fitzpatrick, whose research forms the basis of this lesson, discusses how she has studied genetic rescue using Trinidadian Guppies (fish) in [▶\"Saving a species through genetic rescue: Why we need model organisms\"](https://www.youtube.com/watch?v=AiXyHxv4Sx4&list=PLz-D3xOC0d88kLYQLB9xeUz7gAaO1JJZb&index=3).",
+                    "StepQuickDescription": "Dr. Fitzpatrick, whose research forms the basis of this lesson, discusses how she has studied genetic rescue using Trinidadian Guppies (fish) in [▶'Saving a species through genetic rescue: Why we need model organisms'](https://www.youtube.com/watch?v=AiXyHxv4Sx4&list=PLz-D3xOC0d88kLYQLB9xeUz7gAaO1JJZb&index=3).",
                     "StepDetails": null,
                     "Vocab": null,
                     "VariantNotes": null,
@@ -953,7 +961,7 @@
     "background": {
       "__component": "lesson-plan.collapsible-text-section",
       "SectionTitle": "Background",
-      "Content": "#### Connection to Research\n How do we save endangered species? This lesson deals with one option called *genetic rescue*—a conservation strategy that involves moving individuals from one population into an endangered population that is highly inbred in order to add genetic variation to enable population recovery. Students learn about two distinct lines of research: one measuring the success of an attempt to save endangered Florida panthers; the other using wild Trinidadian guppies as a model of endangered species in order to better understand details of how genetic rescue can succeed or fail. \n#### Research Background\n Watch this video for a lot of panther background: [▶\"What is genetic rescue, and can we use it to save endangered species?\"](https://www.youtube.com/watch?v=oFQmNq8sJ2Y&list=PLz-D3xOC0d88kLYQLB9xeUz7gAaO1JJZb&index=2)  \n\nThe Florida panther is a unique subspecies (*Puma concolor coryi*) of the American puma (*Puma concolor*). It's not to be confused with black panthers, which are the dark (melanistic) forms of leopards or jaguars. The Florida panther was nearly driven to extinction by habitat loss, fragmentation, and targeted hunting. In the mid-1990s, there remained only a tiny ~20 individual population of panthers in south Florida, and they were highly inbred. They had a lot of recessive genetic abnormalities, including visible, superficial traits like: kinked tails and cowlicks in their fur, to more significant problems like: cryptorchidism (undescended testicles, causing infertility in males) and heart defects. Wildlife managers decided to relocate 8 female pumas from Texas (*Puma concolor couguar*) into Florida to introduce needed genetic variation.  \n\nStudents will get to analyze 20 years worth of monitoring data to assess whether genetic rescue was successful (it was! There are now over 200 Florida panthers). At the same time, students will compare these results to a paired data set in Trinidadian guppies to understand how model organisms can be used to answer scientific questions that are difficult to answer in an endangered or difficult-to-study species.\n\n#### Related Florida Panther Paper:\n![screenshot of panther study paper](https://catalog.galacticpolymath.com/lessons/geneticRescue_sci/VanDeKerk_paper_screenshot.png)\n[Link to study](https://wildlife.onlinelibrary.wiley.com/doi/10.1002/wmon.1041)\n\n\nThis video connects genetic rescue research on Florida panthers to the Trinidadian guppy model species: [▶\"Saving a species through genetic rescue: Why we need model organisms\"](https://www.youtube.com/watch?v=AiXyHxv4Sx4&list=PLz-D3xOC0d88kLYQLB9xeUz7gAaO1JJZb&index=3)\nTo study many details of genetic rescue in a model system where we don't have to worry about inadvertently driving a species extinct, Dr. Sarah Fitzpatrick and colleagues went to Trinidad. They took advantage of previous experiments that had moved guppies from a downstream population that had lots of genetic variation into upstream pools with only a few, highly inbred fish. \n\nThis genetic rescue experiment was indeed successful, and after only a few months, genetic variation increased and the population rebounded from around 20 individuals to over 1,000.\n\n\n#### Related Guppy Paper:\n![screenshot of Scientific Study](https://catalog.galacticpolymath.com/lessons/geneticRescue_sci/fitzpatrick_paper_screenshot.png)\n[Link to study](https://onlinelibrary.wiley.com/doi/10.1111/eva.12356)\n\n#### Further Reading\n- [USFWS Florida Panther Profile](https://www.fws.gov/refuge/florida_panther/wah/panther.html)\n- [Nat Geo: Planned roads could imperil Florida's panthers—and last remaining wilderness](https://www.nationalgeographic.com/animals/article/florida-toll-road-threatens-wildlife-panthers?loggedin=true)\n- [The Florida Panther: Past, Present and Future](https://edis.ifas.ufl.edu/publication/UW402)\n- [America’s cat is on the comeback](https://www.americanscientist.org/article/americas-cat-is-on-the-comeback)\n- [Of kings and Alpine Ibex: the amazing resurrection of a species from near-extinction](https://natureecoevocommunity.nature.com/posts/59792-of-kings-and-alpine-ibex-the-amazing-resurrection-of-a-species-from-near-extinction)\n",
+      "Content": "#### Connection to Research\n How do we save endangered species? This lesson deals with one option called *genetic rescue*—a conservation strategy that involves moving individuals from one population into an endangered population that is highly inbred in order to add genetic variation to enable population recovery. Students learn about two distinct lines of research: one measuring the success of an attempt to save endangered Florida panthers; the other using wild Trinidadian guppies as a model of endangered species in order to better understand details of how genetic rescue can succeed or fail. \n#### Research Background\n Watch this video for a lot of panther background: [▶'What is genetic rescue, and can we use it to save endangered species?'](https://www.youtube.com/watch?v=oFQmNq8sJ2Y&list=PLz-D3xOC0d88kLYQLB9xeUz7gAaO1JJZb&index=2)  \n\nThe Florida panther is a unique subspecies (*Puma concolor coryi*) of the American puma (*Puma concolor*). It's not to be confused with black panthers, which are the dark (melanistic) forms of leopards or jaguars. The Florida panther was nearly driven to extinction by habitat loss, fragmentation, and targeted hunting. In the mid-1990s, there remained only a tiny ~20 individual population of panthers in south Florida, and they were highly inbred. They had a lot of recessive genetic abnormalities, including visible, superficial traits like: kinked tails and cowlicks in their fur, to more significant problems like: cryptorchidism (undescended testicles, causing infertility in males) and heart defects. Wildlife managers decided to relocate 8 female pumas from Texas (*Puma concolor couguar*) into Florida to introduce needed genetic variation.  \n\nStudents will get to analyze 20 years worth of monitoring data to assess whether genetic rescue was successful (it was! There are now over 200 Florida panthers). At the same time, students will compare these results to a paired data set in Trinidadian guppies to understand how model organisms can be used to answer scientific questions that are difficult to answer in an endangered or difficult-to-study species.\n\n#### Related Florida Panther Paper:\n![screenshot of panther study paper](VanDeKerk_paper_screenshot.png)\n[Link to study](https://wildlife.onlinelibrary.wiley.com/doi/10.1002/wmon.1041)\n\n\nThis video connects genetic rescue research on Florida panthers to the Trinidadian guppy model species: [▶'Saving a species through genetic rescue: Why we need model organisms'](https://www.youtube.com/watch?v=AiXyHxv4Sx4&list=PLz-D3xOC0d88kLYQLB9xeUz7gAaO1JJZb&index=3)\n\nTo study many details of genetic rescue in a model system where we don't have to worry about inadvertently driving a species extinct, Dr. Sarah Fitzpatrick and colleagues went to Trinidad. They took advantage of previous experiments that had moved guppies from a downstream population that had lots of genetic variation into upstream pools with only a few, highly inbred fish. \n\nThis genetic rescue experiment was indeed successful, and after only a few months, genetic variation increased and the population rebounded from around 20 individuals to over 1,000.\n\n\n#### Related Guppy Paper:\n![screenshot of Scientific Study](fitzpatrick_paper_screenshot.png)\n[Link to study](https://onlinelibrary.wiley.com/doi/10.1111/eva.12356)\n\n#### Further Reading\n- [USFWS Florida Panther Profile](https://www.fws.gov/refuge/florida_panther/wah/panther.html)\n- [Nat Geo: Planned roads could imperil Florida's panthers—and last remaining wilderness](https://www.nationalgeographic.com/animals/article/florida-toll-road-threatens-wildlife-panthers?loggedin=true)\n- [The Florida Panther: Past, Present and Future](https://edis.ifas.ufl.edu/publication/UW402)\n- [America’s cat is on the comeback](https://www.americanscientist.org/article/americas-cat-is-on-the-comeback)\n- [Of kings and Alpine Ibex: the amazing resurrection of a species from near-extinction](https://natureecoevocommunity.nature.com/posts/59792-of-kings-and-alpine-ibex-the-amazing-resurrection-of-a-species-from-near-extinction)\n",
       "InitiallyExpanded": true
     },
     "standards-header": {

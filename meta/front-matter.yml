@@ -1,9 +1,15 @@
 id: '3'
 ShortTitle: geneticRescue
-TemplateVer: 0.2.7
-galacticPubsVer: 0.6.6
+Language: English
+Country: United States
+lang: en
+lng: eng
+locale: en-US
+TemplateVer: 0.3.3
+galacticPubsVer: 0.8.0
 FirstPublicationDate: 2021-12-15 17:06:16
-LastUpdated: 2022-03-15 18:24:06
+LastUpdated: 2022-06-28 17:03:48
+URL: https://galacticpolymath.com/lessons/3
 GPCatalogPath: https://catalog.galacticpolymath.com/lessons/geneticRescue_sci/LESSON.json
 GitHubPath: git@github.com:galacticpolymath/geneticRescue_sci.git
 PublicationStatus: Live
@@ -25,6 +31,7 @@ LessonBanner: assets/banners_etc/banner.png
 TargetSubject: Science
 LessonEnvir: Classroom
 ForGrades: 9-12
+GradesOrYears: Grades
 EstLessonTime: 5 x 45 min
 LearningEpaulette: assets/learning-plots/GP-Learning-Epaulette.png
 LearningEpaulette_vert: assets/learning-plots/GP-Learning-Epaulette_vert.png
@@ -42,6 +49,11 @@ DrivingQ: Can genetic rescue succeed in bringing a population back from the verg
   of extinction?
 EssentialQ: How do we use scientific methods to measure and develop solutions for
   our negative impacts on the world?
+Hooks: ''
+LearningSummary: ''
+MiscMD: |-
+  #### Hook:
+  - Students are drawn into rigorous activities on genetics, ecology, and human-wildlife interactions through the narrative of real, ongoing conservation challenges of this charismatic big cat.
 LearningObj: |-
   1. Provide examples of variation in genes, traits, and individual survival, and why each is important for a species to persist and evolve.
   2. Summarize how human activities fragment animal populations and how habitat fragmentation limits gene flow, reducing genetic variation.
@@ -51,9 +63,6 @@ LearningObj: |-
   6. Propose a model organism to use for research on species that are endangered or infeasible to study.
   7. Interpret scatter plot data from a model organism (Trinidadian guppies) and compare to related data in an endangered species (Florida panthers) to draw broader conclusions about the effectiveness of genetic rescue.
   8. Assess the potential risks and benefits of genetic rescue for a particular species, and propose a course of action.
-MiscMD: |-
-  #### Hook:
-  - Students are drawn into rigorous activities on genetics, ecology, and human-wildlife interactions through the narrative of real, ongoing conservation challenges of this charismatic big cat.
 Tags:
 - genetic rescue
 - genetics
