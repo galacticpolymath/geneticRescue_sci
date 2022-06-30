@@ -6,13 +6,13 @@ lang: en
 lng: eng
 locale: en-US
 TemplateVer: 0.3.3
-galacticPubsVer: 0.8.0
+galacticPubsVer: 0.8.1
 FirstPublicationDate: 2021-12-15 17:06:16
-LastUpdated: 2022-06-29 15:32:54
+LastUpdated: 2022-06-30 11:50:05
 URL: https://galacticpolymath.com/lessons/3
 GPCatalogPath: https://catalog.galacticpolymath.com/lessons/geneticRescue_sci/LESSON.json
 GitHubPath: git@github.com:galacticpolymath/geneticRescue_sci.git
-PublicationStatus: Live
+PublicationStatus: Draft
 RebuildAllMaterials: no
 ReleaseDate: '2021-12-15'
 PublicationDate: '2021-12-15'
@@ -78,11 +78,10 @@ Description: |-
 
   In Day 4, go deeper into genetic rescue: what can go wrong, and students provide evidence of their understanding of how all the concepts connect through a concept mapping exercise, interspersed with our carefully crafted explainer videos. A key take-home is that even though genetic rescue worked in Florida panthers, it's quite risky to test out conservation strategies on an endangered species. The concluding task is to analyze a table of organisms and their characteristics to determine which would be good models to study the effectiveness of genetic rescue without risking a rare species' extinction. Day 5 builds on this to reveal Dr. Sarah Fitzpatrick's (this lesson's sponsor) research using Trinidadian guppies as a model of genetic rescue. Students then spend much of the class period analyzing real, paired data collected from Florida panthers and guppies. They are asked to compare and label graphs from both species, and synthesize broader conclusions. The lesson leaves open many options for project-based lessons and independent projects.
 QuickPrep: |-
-  1. Watch Video(s) for Part 1
-  2. Look over the [Teaching Materials](#teaching_materials)
-  3. Get detailed, easy-to-follow instructions in [Procedure](#procedure)
-  4. Skim the [Background](#background) to go a bit deeper
-  5. Teach it and [let us know what you think!](#feedback)
+  1. Check out lesson multimedia below
+  2. Look over [Teaching Materials](#teaching_materials)
+  3. Read our easy [Procedure](#procedure)
+  4. Teach it and [let us know what you think!](#feedback)
 Bonus: ''
 Extensions: One exciting extension could be to have students investigate map data
   of panther car collision mortality events over time. [This incredible interactive
