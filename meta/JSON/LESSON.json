@@ -10,9 +10,9 @@
   "locale": "en-US",
   "DefaultLocale": "en-US",
   "TemplateVer": "0.3.4",
-  "galacticPubsVer": "0.8.4",
+  "galacticPubsVer": "0.8.7",
   "FirstPublicationDate": "2021-12-15 17:06:16",
-  "LastUpdated": "2022-07-15 23:24:05",
+  "LastUpdated": "2022-07-26 17:58:58",
   "URL": "https://galacticpolymath.com/lessons/3",
   "GPCatalogPath": "https://catalog.galacticpolymath.com/lessons/geneticRescue_sci/LESSON.json",
   "GitHubPath": "git@github.com:galacticpolymath/geneticRescue_sci.git",
@@ -241,7 +241,7 @@
                       ]
                     },
                     {
-                      "itemTitle": "Part 2 Panther Genotype Cards for Hands On Simulation of Genetics of Inbreeding in Panthers",
+                      "itemTitle": "Part 1 Student Worksheet",
                       "itemCat": null,
                       "links": [
                         {
@@ -250,12 +250,12 @@
                         },
                         {
                           "linkText": "Copy to My Google Drive",
-                          "url": "https://docs.google.com/document/d/1pV0IRpph3dnb8V-o0uKfuNjedNV8BFsdNBoG2BSKK0o/"
+                          "url": "https://docs.google.com/document/d/1pV0IRpph3dnb8V-o0uKfuNjedNV8BFsdNBoG2BSKK0o/template/preview"
                         }
                       ]
                     },
                     {
-                      "itemTitle": "Part 5 Student Worksheet",
+                      "itemTitle": "Part 1 Teacher Worksheet",
                       "itemCat": null,
                       "links": [
                         {
@@ -264,7 +264,7 @@
                         },
                         {
                           "linkText": "Copy to My Google Drive",
-                          "url": "https://docs.google.com/document/d/1QOCEvwIk8366_VK18TnXMCyqDyy9sx6D12q5xjcGK_U/"
+                          "url": "https://docs.google.com/document/d/1QOCEvwIk8366_VK18TnXMCyqDyy9sx6D12q5xjcGK_U/template/preview"
                         }
                       ]
                     }
@@ -290,7 +290,7 @@
                       ]
                     },
                     {
-                      "itemTitle": "Part 2 Teacher Worksheet",
+                      "itemTitle": "Part 2 Student Worksheet",
                       "itemCat": null,
                       "links": [
                         {
@@ -299,12 +299,12 @@
                         },
                         {
                           "linkText": "Copy to My Google Drive",
-                          "url": "https://docs.google.com/document/d/1522hLLXRKBO8VzALl6WXv4WyuNa_I1jAJormI5tOuH8/"
+                          "url": "https://docs.google.com/document/d/1522hLLXRKBO8VzALl6WXv4WyuNa_I1jAJormI5tOuH8/template/preview"
                         }
                       ]
                     },
                     {
-                      "itemTitle": "Part 2 Student Worksheet",
+                      "itemTitle": "Part 2 Teacher Worksheet",
                       "itemCat": null,
                       "links": [
                         {
@@ -313,12 +313,12 @@
                         },
                         {
                           "linkText": "Copy to My Google Drive",
-                          "url": "https://docs.google.com/document/d/1HkWzEQB69xulxAWz2Xh5tnpDa2Uwj9JSZnLIhJuEMFA/"
+                          "url": "https://docs.google.com/document/d/1HkWzEQB69xulxAWz2Xh5tnpDa2Uwj9JSZnLIhJuEMFA/template/preview"
                         }
                       ]
                     },
                     {
-                      "itemTitle": "Part 1 Teacher Worksheet",
+                      "itemTitle": "Part 2 Panther Genotype Cards for Hands On Simulation of Genetics of Inbreeding in Panthers",
                       "itemCat": null,
                       "links": [
                         {
@@ -327,7 +327,7 @@
                         },
                         {
                           "linkText": "Copy to My Google Drive",
-                          "url": "https://docs.google.com/presentation/d/1rwgBdQ3W9XKdhfEddiBGs5vRxtTDOthOiSZAgNILqUw/"
+                          "url": "https://docs.google.com/presentation/d/1rwgBdQ3W9XKdhfEddiBGs5vRxtTDOthOiSZAgNILqUw/template/preview"
                         }
                       ]
                     }
@@ -353,7 +353,7 @@
                       ]
                     },
                     {
-                      "itemTitle": "Part 4 Teacher Worksheet",
+                      "itemTitle": "Part 3 Student Worksheet",
                       "itemCat": null,
                       "links": [
                         {
@@ -362,12 +362,12 @@
                         },
                         {
                           "linkText": "Copy to My Google Drive",
-                          "url": "https://docs.google.com/document/d/15hzLjht_9G8jfyDMk6ybpdDbJeYMO9O-wvhoOgx9ly8/"
+                          "url": "https://docs.google.com/document/d/15hzLjht_9G8jfyDMk6ybpdDbJeYMO9O-wvhoOgx9ly8/template/preview"
                         }
                       ]
                     },
                     {
-                      "itemTitle": "Part 4 Student Worksheet",
+                      "itemTitle": "Part 3 Teacher Worksheet",
                       "itemCat": null,
                       "links": [
                         {
@@ -376,7 +376,7 @@
                         },
                         {
                           "linkText": "Copy to My Google Drive",
-                          "url": "https://docs.google.com/document/d/1_3YoCjZOVkdEkiiyiAn7cOxIgezulVlYyWT3ChPMYr8/"
+                          "url": "https://docs.google.com/document/d/1_3YoCjZOVkdEkiiyiAn7cOxIgezulVlYyWT3ChPMYr8/template/preview"
                         }
                       ]
                     }
@@ -402,7 +402,7 @@
                       ]
                     },
                     {
-                      "itemTitle": "Part 1 Student Worksheet",
+                      "itemTitle": "Part 4 Student Worksheet",
                       "itemCat": null,
                       "links": [
                         {
@@ -411,12 +411,12 @@
                         },
                         {
                           "linkText": "Copy to My Google Drive",
-                          "url": "https://docs.google.com/document/d/1y5be2mif380Ee1XpI3dzyTn2WsrVm4zhe95XcG1XHYg/"
+                          "url": "https://docs.google.com/document/d/1y5be2mif380Ee1XpI3dzyTn2WsrVm4zhe95XcG1XHYg/template/preview"
                         }
                       ]
                     },
                     {
-                      "itemTitle": "Part 5 Teacher Worksheet",
+                      "itemTitle": "Part 4 Teacher Worksheet",
                       "itemCat": null,
                       "links": [
                         {
@@ -425,7 +425,7 @@
                         },
                         {
                           "linkText": "Copy to My Google Drive",
-                          "url": "https://docs.google.com/document/d/1zgylTvNDPslFcPwWyujTkgJphW7GmLrj-QoiirYJ-MA/"
+                          "url": "https://docs.google.com/document/d/1zgylTvNDPslFcPwWyujTkgJphW7GmLrj-QoiirYJ-MA/template/preview"
                         }
                       ]
                     }
@@ -451,7 +451,7 @@
                       ]
                     },
                     {
-                      "itemTitle": "Part 3 Teacher Worksheet",
+                      "itemTitle": "Part 5 Student Worksheet",
                       "itemCat": null,
                       "links": [
                         {
@@ -460,12 +460,12 @@
                         },
                         {
                           "linkText": "Copy to My Google Drive",
-                          "url": "https://docs.google.com/document/d/1ZAoZ_E2Jm6R5zI9fswxCorDS4AiCi9bxlvAZxrFGysY/"
+                          "url": "https://docs.google.com/document/d/1ZAoZ_E2Jm6R5zI9fswxCorDS4AiCi9bxlvAZxrFGysY/template/preview"
                         }
                       ]
                     },
                     {
-                      "itemTitle": "Part 3 Student Worksheet",
+                      "itemTitle": "Part 5 Teacher Worksheet",
                       "itemCat": null,
                       "links": [
                         {
@@ -474,7 +474,7 @@
                         },
                         {
                           "linkText": "Copy to My Google Drive",
-                          "url": "https://docs.google.com/document/d/17pVB3Aty3FHTRtH5-3ntvluGNMv_HBBuuruTBezuoQk/"
+                          "url": "https://docs.google.com/document/d/17pVB3Aty3FHTRtH5-3ntvluGNMv_HBBuuruTBezuoQk/template/preview"
                         }
                       ]
                     }

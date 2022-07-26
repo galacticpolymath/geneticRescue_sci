@@ -9,9 +9,9 @@ lng: eng
 locale: en-US
 DefaultLocale: en-US
 TemplateVer: 0.3.4
-galacticPubsVer: 0.8.4
+galacticPubsVer: 0.8.7
 FirstPublicationDate: 2021-12-15 17:06:16
-LastUpdated: 2022-07-15 23:24:05
+LastUpdated: 2022-07-26 17:58:58
 URL: https://galacticpolymath.com/lessons/3
 GPCatalogPath: https://catalog.galacticpolymath.com/lessons/geneticRescue_sci/LESSON.json
 GitHubPath: git@github.com:galacticpolymath/geneticRescue_sci.git
@@ -41,8 +41,8 @@ LearningEpaulette_vert: assets/learning-plots/GP-Learning-Epaulette_vert.png
 LearningEpaulette_params_heightScalar: 0.7
 LearningEpaulette_params_randomSeed: 111
 LearningChart: assets/learning-plots/GP-Learning-Chart.png
-LearningChart_params_centralText: ''
-LearningChart_params_caption: ''
+LearningChart_params_centralText: .na
+LearningChart_params_caption: .na
 LearningChart_params_captionN: no
 SupportingMedia:
 - assets/supporting-media/ex_P2classdata.jpg
@@ -52,8 +52,8 @@ DrivingQ: Can genetic rescue succeed in bringing a population back from the verg
   of extinction?
 EssentialQ: How do we use scientific methods to measure and develop solutions for
   our negative impacts on the world?
-Hooks: ''
-LearningSummary: ''
+Hooks: .na
+LearningSummary: .na
 MiscMD: |-
   #### Hook:
   - Students are drawn into rigorous activities on genetics, ecology, and human-wildlife interactions through the narrative of real, ongoing conservation challenges of this charismatic big cat.
@@ -85,7 +85,7 @@ QuickPrep: |-
   2. Look over [Teaching Materials](#teaching_materials)
   3. Read our easy [Procedure](#procedure)
   4. Teach it and [let us know what you think!](#feedback)
-Bonus: ''
+Bonus: .na
 Extensions: One exciting extension could be to have students investigate map data
   of panther car collision mortality events over time. [This incredible interactive
   web tool](https://geodata.myfwc.com/datasets/florida-panther-mortality/explore?filters=eyJEYXRlIjpbMTQ5Mzk2NDkyNzE4OS41NiwxNjA5NTQ1NjAwMDAwXX0%3D&location=26.491578%2C-81.497011%2C12.39)
@@ -147,7 +147,7 @@ Credits: "#### Lead Author and Creative Director:\nMatt Wilkins, PhD\nIf you lik
   \n\n#### Narration and Scoring:\nStephanie Castillo (aka [Phuture Doctors](https://phuturedoctors.com/))\n\n####
   Education Consultants:\n- [Karlisa Callwood, PhD](https://www.perryinstitute.org/staff/dr-karlisa-callwood)\n-
   [Pedro Márquez-Zacarías](https://twitter.com/pedrom_z)\n- [Sarah Grasty, MS](https://www.linkedin.com/in/sarah-grasty-988676b0/)"
-ScriptsToRun: ''
+ScriptsToRun: .na
 ReadyToCompile:
 - Front Matter
 - Standards Alignment
